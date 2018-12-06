@@ -46,11 +46,16 @@ module.exports = {
 
     const axios = require('axios');
 
+    // axios({
+    //   method: 'post',
+    //   url: 'https://api.paystack.co/charge',
+    //   data: bodyFormData,
+    //   config: { headers: headers}
+    //   })
     axios.post(`https://api.paystack.co/charge`, {
         headers: headers,
         data: JSON.stringify(transaction)
       })
-      .then(response => response.json())
       .then(chargeResponse => {
         console.log(chargeResponse)
         // Handle the charge response
