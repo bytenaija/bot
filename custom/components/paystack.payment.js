@@ -60,7 +60,7 @@ module.exports = {
           conversation.keepTurn(true)
           conversation.transition('success')
         }
-      })
+      }).catch(err => console.log("Errorroooooooooooo", err))
 
     done();
   }
