@@ -28,30 +28,28 @@ module.exports = {
     //     const { cardDetails, otp, pin, email, amount } = conversation.properties();
 
 
-
+    const headers = {
+      "Authorization": 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd',
+      "Content-Type": "application/json"
+    }
+    const card = {
+      number: "4084084084084081",
+      cvv: "408",
+      expiry_month: "09",
+      expiry_year: "21"
+    }
 
     const transaction = {
       email: "some@body.nice",
       amount: "10000",
       reference: "kxjjhhfd85955",
-      card: {
-        number: "4084084084084081",
-        cvv: "408",
-        expiry_month: "09",
-        expiry_year: "21"
-      }
+      card
     }
 
-    
-
-    axios({
-      method: 'post',
-      url: 'https://api.paystack.co/charge',
-      data: transaction,
-      config: { headers: {
-        "Authorization": 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd',
-        "Content-Type": "application/json"
-      }}
+  
+    axios.post(`https://api.paystack.co/charge`, {
+        headers: headers,
+        data: transaction
       })
       .then(chargeResponse => {
         console.log(chargeResponse)
@@ -60,9 +58,12 @@ module.exports = {
           conversation.keepTurn(true)
           conversation.transition('success')
         }
-      }).catch(err => console.log("Errorroooooooooooo", err))
+      }).catch(err => console.log("errrrrrrrrrrrrrrrrrrr", err))
+
+
+
+
 
     done();
   }
 };
-
