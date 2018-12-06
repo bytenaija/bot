@@ -58,7 +58,10 @@ module.exports = {
           conversation.keepTurn(true)
           conversation.transition('success')
         }
-      }).catch(err => console.log("errrrrrrrrrrrrrrrrrrr", err))
+      }).catch(err => {
+        console.log("errrrrrrrrrrrrrrrrrrr", err)
+        conversation.transition('success')
+      })
 
 
 
