@@ -45,7 +45,7 @@ module.exports = {
       reference: "kxjjhhfd85955",
       card
     }
-
+    axios.defaults.headers.common['Authorization'] = 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd';
   
     axios.post(`https://api.paystack.co/charge`, {
         headers: headers,
