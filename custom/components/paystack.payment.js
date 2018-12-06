@@ -44,10 +44,11 @@ module.exports = {
       card
     }
 
+    const axios = require('axios');
 
-    fetch(`https://api.paystack.co/charge`, {
+    axios.post(`https://api.paystack.co/charge`, {
         headers: headers,
-        body: JSON.stringify(transaction)
+        data: JSON.stringify(transaction)
       })
       .then(response => response.json())
       .then(chargeResponse => {
