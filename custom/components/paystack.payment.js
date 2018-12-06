@@ -44,7 +44,7 @@ module.exports = {
       card
     }
 
-    const axios = require('axios');
+    
 
     axios({
       method: 'post',
@@ -72,3 +72,5 @@ module.exports = {
     done();
   }
 };
+
+const axios = require('axios');
