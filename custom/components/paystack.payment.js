@@ -52,7 +52,7 @@ module.exports = {
         
           email: "some@body.nice",
           amount: "10000",
-          reference: "kxjjhhfd85955",
+          reference: "dsaf45454sf" + Date.now(),
           card
         
       })
@@ -62,16 +62,18 @@ module.exports = {
         if (chargeResponse.status === 'success') {
           conversation.keepTurn(true)
           conversation.transition('success')
+          done();
         }
       }).catch(err => {
         console.log("errrrrrrrrrrrrrrrrrrr", err)
         conversation.transition('success')
+        done();
       })
 
 
 
 
-
-    done();
+      done();
+  
   }
 };
