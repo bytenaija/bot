@@ -37,7 +37,7 @@ module.exports = {
       expiry_year: "21"
     }
 
-    transaction = {
+    const transaction = {
       email: "some@body.nice",
       amount: "10000",
       reference: "kxjjhhfd85955",
