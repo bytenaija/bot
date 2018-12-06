@@ -25,13 +25,9 @@ module.exports = {
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
-    //     const { cardDetails, otp, pin, email, amount } = conversation.properties();
+    const { cardDetails, otp, pin, email, amount } = conversation.properties();
 
 
-    const headers = {
-      "Authorization": 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd',
-      "Content-Type": "application/json"
-    }
     const card = {
       number: "4084084084084081",
       cvv: "408",
@@ -45,11 +41,11 @@ module.exports = {
       reference: "kxjjhhfd85955",
       card
     }
+   
     axios.defaults.headers.common['Authorization'] = 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
   
     axios.post(`https://api.paystack.co/charge`, {
-        
-        
           email: "some@body.nice",
           amount: "10000",
           reference: "dsaf45454sf" + Date.now(),
@@ -62,8 +58,9 @@ module.exports = {
         if (chargeResponse.status === 'success') {
           conversation.keepTurn(true)
           conversation.transition('success')
-          done();
+          
         }
+        done();
       }).catch(err => {
         console.log("errrrrrrrrrrrrrrrrrrr", err)
         conversation.transition('success')
