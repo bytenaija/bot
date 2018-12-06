@@ -49,7 +49,12 @@ module.exports = {
   
     axios.post(`https://api.paystack.co/charge`, {
         headers: headers,
-        data: transaction
+        data: {
+          email: "some@body.nice",
+          amount: "10000",
+          reference: "kxjjhhfd85955",
+          card
+        }
       })
       .then(chargeResponse => {
         console.log(chargeResponse)
