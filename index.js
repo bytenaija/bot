@@ -13,6 +13,7 @@ const serviceUrl = '/components';
 /**
  * The custom component service is initialized in service.js
  */
+
 const app = express();
 const main = require('./service');
 main(app, serviceUrl);

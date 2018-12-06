@@ -47,7 +47,7 @@ module.exports = {
     axios({
       method: 'post',
       url: 'https://api.paystack.co/charge',
-      data: JSON.stringify(transaction),
+      data: transaction,
       config: { headers: {
         "Authorization": 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd',
         "Content-Type": "application/json"
