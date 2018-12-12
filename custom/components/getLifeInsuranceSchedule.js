@@ -68,23 +68,23 @@ let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus
         headers: headers,
       })
       .then(response => {
-        console.log(response.data)
-        // Handle the charge response
+        console.log("Data", response.data)
+        
         if (response.data.success) {
             let {result} = response.data;
           conversation.keepTurn(true)
           conversation.variable("transactionRef", result.transactionref)
-          conversation.transition('getLifePolicyRenewalScheduleSuccess')
+          conversation.transition('lifePolicyRenewalSuccess')
           done()
         }else{
             conversation.keepTurn(true);
-            conversation.transition('getLifePolicyRenewalScheduleFailure')
+            conversation.transition('lifePolicyRenewalFailure')
             done()
         }
       }).catch(err =>{
-          console.log(err);
+          console.log("error",err);
           conversation.keepTurn(true);
-            conversation.transition('getLifePolicyRenewalScheduleError')
+            conversation.transition('lifePolicyRenewalError')
             done()
       })
   }
