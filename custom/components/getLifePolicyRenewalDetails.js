@@ -18,6 +18,7 @@ module.exports = {
     //     const { cardDetails, otp, pin, email, amount } = conversation.properties();
     const {policyNo} = conversation.properties()
 
+    console.log("policy Number", policyNo)
     const headers = {
       "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
       "Content-Type": "application/json"
