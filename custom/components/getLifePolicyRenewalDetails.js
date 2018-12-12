@@ -28,10 +28,10 @@ module.exports = {
         headers: headers,
       })
       .then(response => {
-        console.log(response)
+        console.log(response.data)
         // Handle the charge response
-        if (response.result.isSuccessful) {
-            let {result} = response;
+        if (response.data.result.isSuccessful) {
+            let {result} = response.data;
           conversation.keepTurn(true)
           conversation.variable("amount", result.nextInstallmentPremium)
           conversation.variable("phone", result.phone)
@@ -45,6 +45,11 @@ module.exports = {
             conversation.transition()
             done()
         }
+      }).catch(err =>{
+          console.log(err);
+          conversation.keepTurn(true);
+            conversation.transition()
+            done()
       })
   }
 };
