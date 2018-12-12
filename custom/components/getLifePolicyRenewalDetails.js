@@ -11,7 +11,7 @@ module.exports = {
       },
      
     },
-    supportedActions: ['authenticateWithOTP', 'authenticateWithPIN', 'success']
+    supportedActions: ['getPolicyRenewalFailure',  'getPolicyRenewalSuccess', 'getPolicyRenewalError']
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
@@ -39,17 +39,17 @@ module.exports = {
           conversation.variable("policyStatus", result.policyStatus)
           conversation.variable("customerName", result.clientName)
           conversation.variable("email", result.email)
-          conversation.transition('success')
+          conversation.transition('getPolicyRenewalSuccess')
           done()
         }else{
             conversation.keepTurn(true);
-            conversation.transition()
+            conversation.transition('getPolicyRenewalFailure')
             done()
         }
       }).catch(err =>{
           console.log(err);
           conversation.keepTurn(true);
-            conversation.transition()
+          conversation.transition('getPolicyRenewalError')
             done()
       })
   }
