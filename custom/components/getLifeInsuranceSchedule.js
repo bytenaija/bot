@@ -52,7 +52,7 @@ module.exports = {
     }
     
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
-    
+
 let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus} = conversation.properties();
 
     let data = 
@@ -66,7 +66,7 @@ let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus
             policyStatus
         }
     
-    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetLifePolicyRenewalDetails?policyno=${policyNo}`, data, {
+    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostLifeRenewalSchedule`, data, {
         headers: headers,
       })
       .then(response => {

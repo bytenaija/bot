@@ -47,7 +47,7 @@ module.exports = {
             done()
         }
       }).catch(err =>{
-          console.log(err);
+          console.log("error in renewal details", err);
           conversation.keepTurn(true);
           conversation.transition('getPolicyRenewalError')
             done()
