@@ -64,9 +64,8 @@ let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus
             policyStatus
         }
     
-    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetLifePolicyRenewalDetails?policyno=${policyNo}`, {
+    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetLifePolicyRenewalDetails?policyno=${policyNo}`, data, {
         headers: headers,
-        data: data
       })
       .then(response => {
         console.log(response.data)
