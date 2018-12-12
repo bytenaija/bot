@@ -40,7 +40,7 @@ module.exports = {
         type: 'string'
       },
     },
-    supportedActions: ['getLifePolicyRenewalScheduleSuccess', 'getLifePolicyRenewalScheduleFailure', 'getLifePolicyRenewalScheduleError']
+    supportedActions: ['lifePolicyRenewalSuccess', 'lifePolicyRenewalFailure', 'lifePolicyRenewalError']
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.

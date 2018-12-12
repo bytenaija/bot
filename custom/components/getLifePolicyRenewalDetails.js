@@ -11,7 +11,7 @@ module.exports = {
       },
      
     },
-    supportedActions: ['getPolicyRenewalFailure',  'getPolicyRenewalSuccess', 'getPolicyRenewalError']
+    supportedActions: ['lifePolicyRenewalSuccess', 'lifePolicyRenewalFailure', 'lifePolicyRenewalError']
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
