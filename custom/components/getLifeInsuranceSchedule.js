@@ -74,8 +74,9 @@ let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus
         
         if (response.data.success) {
             let {result} = response.data;
+            console.log("transaction Ref", transactionRef)
           conversation.keepTurn(true)
-          conversation.variable("transactionRef", result.transactionref)
+          conversation.variable("transactionRef", result.transactionRef)
           conversation.transition('lifePolicyRenewalSuccess')
           done()
         }else{
