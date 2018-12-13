@@ -39,6 +39,7 @@ module.exports = {
                     let filteredResult = [];
                     for (res of result) {
                         filteredResult.push({
+                            id: res.subClassCoverTypes.id,
                             name: res.subClassCoverTypes.coverTypeName,
                             benefits: res.benefits
                         })
