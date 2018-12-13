@@ -25,7 +25,7 @@ module.exports = {
 
 
     
-    Promise.parralel(axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, {
+    axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, {
         headers: headers,
       })
       .then(response => {
@@ -49,6 +49,6 @@ module.exports = {
           conversation.keepTurn(true);
             conversation.transition('lifePolicyRenewalError')
             done()
-      }))
+      })
   }
 };
