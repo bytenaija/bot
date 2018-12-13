@@ -55,10 +55,9 @@ module.exports = {
     }
 
 
-    axios.post(`https://api.paystack.co/charge`, {
-        headers: headers,
-        data: transaction
-      })
+    axios.post(`https://api.paystack.co/charge`, 
+        transaction
+      )
       .then(chargeResponse => {
         console.log(chargeResponse)
         // Handle the charge response
