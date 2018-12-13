@@ -19,6 +19,11 @@ module.exports = {
         required: true,
         type: 'string'
       },
+
+      transactionRef: {
+        required: true,
+        type: 'string'
+      },
     },
     supportedActions: ['authenticateWithOTP', 'authenticateWithPIN', 'paymentSuccess', 'paymentFailure', 'paymentError']
   }),
@@ -41,8 +46,8 @@ module.exports = {
     }
 
     const transaction = {
-      email: "some@body.nice",
-      amount: "10000",
+      email: email,
+      amount: amount * 100,
       reference: "kxjjhhfd85955",
       card
     }
