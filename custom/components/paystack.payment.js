@@ -20,7 +20,7 @@ module.exports = {
         type: 'string'
       },
     },
-    supportedActions: ['authenticateWithOTP', 'authenticateWithPIN', 'success']
+    supportedActions: ['authenticateWithOTP', 'authenticateWithPIN', 'paymentSuccess', 'paymentFailure', 'paymentError']
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
@@ -48,17 +48,25 @@ module.exports = {
 
     axios.post(`https://api.paystack.co/charge`, {
         headers: headers,
-        data: JSON.stringify(transaction)
+        data: transaction
       })
-      .then(response => response.json())
       .then(chargeResponse => {
         console.log(chargeResponse)
         // Handle the charge response
-        if (chargeResponse.status === 'success') {
+        if (chargeResponse.data.status === 'success') {
           conversation.keepTurn(true)
-          conversation.transition('success')
+          conversation.transition('paymentSuccess')
+          done()
+        }else{
+          conversation.keepTurn(true)
+          conversation.transition('paymentFailure')
           done()
         }
+      }).catch(err =>{
+        console.log(err)
+        conversation.keepTurn(true)
+        conversation.transition('paymentError')
+        done()
       })
   }
 };
