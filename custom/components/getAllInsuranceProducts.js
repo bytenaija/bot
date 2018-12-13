@@ -5,7 +5,10 @@ module.exports = {
   metadata: () => ({
     name: 'getAllInsuranceProduct',
     properties: {
-     
+     product: {
+         required: false,
+         type: "string"
+     }
 
     },
     supportedActions: ['getInsuranceProductsSuccess', 'getInsuranceProductsEmpty', 'getInsuranceProductsError']
@@ -22,7 +25,7 @@ module.exports = {
 
 
     
-    axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, {
+    Promise.parralel(axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, {
         headers: headers,
       })
       .then(response => {
@@ -46,6 +49,6 @@ module.exports = {
           conversation.keepTurn(true);
             conversation.transition('lifePolicyRenewalError')
             done()
-      })
+      }))
   }
 };
