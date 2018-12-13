@@ -62,7 +62,7 @@ module.exports = {
       .then(chargeResponse => {
         console.log(chargeResponse.data)
         // Handle the charge response
-        if (chargeResponse.data.status === 'success') {
+        if (chargeResponse.data.status) {
           conversation.keepTurn(true)
           conversation.transition('paymentSuccess')
           done()
