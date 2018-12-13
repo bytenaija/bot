@@ -10,35 +10,21 @@ module.exports = {
         type: 'string'
       },
      
-      amount: {
+      amountPaid: {
         required: true,
         type: 'int'
       },
 
-      phone: {
+      transactionRef: {
         required: true,
         type: 'string'
       },
 
-      transactionDate: {
+      paymentRef: {
         required: false,
         type: 'string'
       },
 
-      policyStatus: {
-        required: true,
-        type: 'string'
-      },
-
-      customerName: {
-        required: true,
-        type: 'string'
-      },
-
-      email: {
-        required: true,
-        type: 'string'
-      },
     },
     supportedActions: ['lifePolicyRenewalSuccess', 'lifePolicyRenewalFailure', 'lifePolicyRenewalError']
   }),
@@ -53,31 +39,25 @@ module.exports = {
     
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
-let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus} = conversation.properties();
+let {transactionRef, policyNo, amountPaid, paymentRef} = conversation.properties();
 
     let data = 
         {
-            customerName,
-            transactionDate,
-            policyNo,
-            email,
-            phone,
-            amount,
-            policyStatus
+            transactionRef, 
+            policyNo, 
+            amountPaid, 
+            paymentRef
         }
     
-    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostLifeRenewalSchedule`, data, {
+    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/FinalizePartnerPayment`, data, {
         headers: headers,
       })
       .then(response => {
         console.log("Data", response.data)
         
         if (response.data.success) {
-            let {result} = response.data;
-            console.log("transaction Ref", result.transactionRef)
           conversation.keepTurn(true)
-          conversation.variable("transactionRef", result.transactionRef)
-          conversation.transition('lifePolicyRenewalSuccess')
+          conversation.transition()
           done()
         }else{
             conversation.keepTurn(true);
