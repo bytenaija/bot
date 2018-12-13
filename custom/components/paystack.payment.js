@@ -29,7 +29,7 @@ module.exports = {
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
-   const { cardDetails, email, amount } = conversation.properties();
+   const { cardDetails, email, amount, transactionRef } = conversation.properties();
 
    axios.defaults.headers.post['Authorization'] = 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd';
 
@@ -41,7 +41,7 @@ module.exports = {
       "Content-Type": "application/json"
     }
     const card = {
-      number: cardDetails.number,
+      number: cardDetails.cardNumber,
       cvv: cardDetails.cvv,
       expiry_month: expiry[0],
       expiry_year: expiry[1]
