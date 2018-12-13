@@ -6,7 +6,7 @@ module.exports = {
     name: 'getAllInsuranceProduct',
     properties: {
      product: {
-         required: false,
+         required: true,
          type: "string"
      }
 
@@ -14,7 +14,7 @@ module.exports = {
     supportedActions: ['getInsuranceProductsSuccess', 'getInsuranceProductsEmpty', 'getInsuranceProductsError']
   }),
   invoke: (conversation, done) => {
-   
+   let {product} = conversation.properties();
     
     const headers = {
       "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
@@ -30,10 +30,13 @@ module.exports = {
       })
       .then(response => {
         console.log("Data", response.data)
-        
+        let selectedInsurance 
         if (response.data.success) {
             let {result} = response.data
-            let selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Travel' || insurance.name == 'Shop Insurance' || insurance.name == 'Private Motor 3rd Party')
+            
+            if(product == 'Car insurance'){
+                selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' ||  insurance.name == 'Private Motor 3rd Party')
+            }
             console.log(selectedInsurance)
             conversation.variable("filteredInsurance", selectedInsurance);
           conversation.keepTurn(true)
