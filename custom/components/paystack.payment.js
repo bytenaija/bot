@@ -60,7 +60,7 @@ module.exports = {
         transaction
       )
       .then(chargeResponse => {
-        console.log(chargeResponse)
+        console.log(chargeResponse.data)
         // Handle the charge response
         if (chargeResponse.data.status === 'success') {
           conversation.keepTurn(true)
