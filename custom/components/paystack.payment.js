@@ -50,7 +50,7 @@ module.exports = {
     const transaction = {
       email: email,
       amount: amount * 100,
-      reference: "kxjjhhfd85955",
+      reference: transactionRef,
       card
     }
 
