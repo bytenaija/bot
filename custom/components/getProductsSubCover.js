@@ -38,10 +38,14 @@ module.exports = {
                     } = response.data
                     let filteredResult = [];
                     for (res of result) {
+                        let description = ''
+                        for(benefit of res.benefits){
+                           description += benefit.name + " : " + benefit.description + "\r\n" ;
+                        }
                         filteredResult.push({
                             id: res.subClassCoverTypes.id,
                             name: res.subClassCoverTypes.coverTypeName,
-                            benefits: res.benefits
+                            description: description
                         })
                     }
                     console.log(filteredResult)
