@@ -30,6 +30,7 @@ module.exports = {
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
    const { cardDetails, email, amount, transactionRef } = conversation.properties();
+   console.log(email)
 
    axios.defaults.headers.post['Authorization'] = 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd';
 
