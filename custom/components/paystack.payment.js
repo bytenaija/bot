@@ -24,18 +24,20 @@ module.exports = {
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
-    //     const { cardDetails, otp, pin, email, amount } = conversation.properties();
+   const { cardDetails, email, amount } = conversation.properties();
 
+   console.log(cardDetails)
+  let expiry = cardDetails.expiry.split("/");
 
     const headers = {
       "Authorization": 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd',
       "Content-Type": "application/json"
     }
     const card = {
-      number: "4084084084084081",
-      cvv: "408",
-      expiry_month: "09",
-      expiry_year: "21"
+      number: cardDetails.number,
+      cvv: cardDetails.cvv,
+      expiry_month: expiry[0],
+      expiry_year: expiry[1]
     }
 
     const transaction = {
