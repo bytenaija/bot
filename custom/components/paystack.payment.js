@@ -64,6 +64,7 @@ module.exports = {
         // Handle the charge response
         if (chargeResponse.data.status) {
           conversation.keepTurn(true)
+          conversation.variable("paymentRef", chargeResponse.data.data.id)
           conversation.transition('paymentSuccess')
           done()
         }else{
