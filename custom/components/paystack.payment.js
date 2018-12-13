@@ -6,17 +6,17 @@ module.exports = {
     name: 'paystack.payment',
     properties: {
       cardDetails: {
-        required: false,
+        required: true,
         type: 'string'
       },
       // otp: { required: false, type: 'string' },
       // pin: { required: false, type: 'string' },
       email: {
-        required: false,
+        required: true,
         type: 'string'
       },
       amount: {
-        required: false,
+        required: true,
         type: 'string'
       },
     },
