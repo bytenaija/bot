@@ -5,10 +5,7 @@ module.exports = {
   metadata: () => ({
     name: 'getAllInsuranceProduct',
     properties: {
-     product: {
-         required: true,
-         type: "string"
-     }
+     
 
     },
     supportedActions: ['getInsuranceProductsSuccess', 'getInsuranceProductsEmpty', 'getInsuranceProductsError']
