@@ -40,7 +40,7 @@ module.exports = {
                     for (res of result) {
                         let description = ''
                         for(benefit of res.benefits){
-                           description += benefit.name + " : " + benefit.description;
+                           description += benefit.name + " : " + benefit.description + "\r \n" ;
                         }
                         filteredResult.push({
                             id: res.subClassCoverTypes.id,
