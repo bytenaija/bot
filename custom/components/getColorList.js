@@ -18,7 +18,7 @@ module.exports = {
 
         axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
-
+        let colorList = []
 
         axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetColorList`, {
                 headers: headers,
@@ -30,11 +30,29 @@ module.exports = {
                     let {
                         result
                     } = response.data
+                    colorList = result;
                     
-                    conversation.variable("colorList", result);
-                    conversation.keepTurn(true)
-                    conversation.transition()
-                    done()
+                    axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetManufactureYear`, {
+                headers: headers,
+            })
+            .then(response => {
+                console.log("Data", response.data)
+                let yrManf = []
+                if (response.data.success) {
+                    let {
+                        result
+                    } = response.data
+
+                    yrManf = result;
+                }
+
+                conversation.variable("colorList", colorList);
+                conversation.variable("yrManf", yrManf);
+                conversation.keepTurn(true)
+                conversation.transition()
+                done()
+            })
+                  
                 } else {
                     conversation.keepTurn(true);
                     conversation.transition('getColorListFailure')
