@@ -6,7 +6,7 @@ module.exports = {
         properties: {
             
         },
-        supportedActions: ['getColorListSuccess', 'getColorListFailure', 'getColorListError']
+        supportedActions: ['carInsuranceFailure']
     }),
     invoke: (conversation, done) => {
 
