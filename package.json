@@ -10,6 +10,10 @@
     "axios": "^0.18.0",
     "email-templates": "^5.0.2",
     "express": "^4.13.4",
+    "generate-password": "^1.4.1",
+    "nodemailer": "^4.7.0",
+    "nodemailer-sendgrid": "^1.0.3",
+    "nodemailer-smtp-transport": "^2.7.4",
     "pug": "^2.0.3"
   },
   "scripts": {

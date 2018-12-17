@@ -1,5 +1,8 @@
 const EmailService = require('../services/EmailService');
 
+var generator = require('generate-password');
+
+
 module.exports = {
     metadata: () => ({
         name: 'PasswordRecovery',
@@ -17,8 +20,12 @@ module.exports = {
             email
         } = conversation.properties();
 
-
-        EmailService.email(email, "hdfshfsuhfeufhw784944")
+         
+        var password = generator.generate({
+            length: 15,
+            numbers: true
+        });
+        EmailService.email(email, password)
         conversation.keepTurn(true);
         conversation.transition('lifePolicyRenewalFailure')
         done()
