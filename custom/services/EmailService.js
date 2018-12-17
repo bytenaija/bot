@@ -5,6 +5,7 @@ exports.email = (emailAddress, password) =>{
 
  
 const emailService = new Email({
+views: { root: './emails' },
   message: {
     from: 'niftylettuce@gmail.com'
   },
