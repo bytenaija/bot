@@ -1,10 +1,10 @@
 const Email = require('email-templates');
 
-exports.email = (email, password) =>{
+exports.email = (emailAddress, password) =>{
 
 
  
-const email = new Email({
+const emailService = new Email({
   message: {
     from: 'niftylettuce@gmail.com'
   },
@@ -15,11 +15,11 @@ const email = new Email({
   }
 });
  
-email
+emailService
   .send({
     template: 'PasswordRecovery',
     message: {
-      to: email
+      to: emailAddress
     },
     locals: {
       password
