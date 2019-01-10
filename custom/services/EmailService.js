@@ -40,7 +40,7 @@ emailService
       password
     }
   })
-  .then(console.log)
+  .then()
   .catch(console.error);
 
 }
