@@ -21,7 +21,6 @@ module.exports = {
             code
         } = conversation.properties();
 
-        console.log("Supplier ID", SupplierID)
         let connection;
         mysql.createConnection({
             host: '5.153.10.230',
