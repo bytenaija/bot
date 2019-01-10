@@ -44,16 +44,17 @@ module.exports = {
                     console.log(result)
                 });
 
-                
-                connection.end()
-                EmailService.email(email, password)
-    
-                      
+                                     
             var password = generator({
                 min:  1000,
                 max:  999999,
                 integer: true
               });
+              
+                connection.end()
+                EmailService.email(email, password)
+    
+ 
               console.log("Pass code", password)
                 conversation.keepTurn(true);
                 conversation.transition()
