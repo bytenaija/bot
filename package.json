@@ -11,10 +11,13 @@
     "email-templates": "^5.0.2",
     "express": "^4.13.4",
     "generate-password": "^1.4.1",
+    "mysql": "^2.16.0",
     "nodemailer": "^4.7.0",
     "nodemailer-sendgrid": "^1.0.3",
     "nodemailer-smtp-transport": "^2.7.4",
-    "pug": "^2.0.3"
+    "promise-mysql": "^3.3.1",
+    "pug": "^2.0.3",
+    "random-number": "0.0.9"
   },
   "scripts": {
     "start": "node index.js",
