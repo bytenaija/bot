@@ -35,7 +35,9 @@ module.exports = {
             return connection.query('select * from suppliers where `supplierID`="' + SupplierID + '"')
             conn.end()
         }).then(row =>{
-            console.log(row[0]);
+            let {email, name, SupplierID} = row[0];
+
+            console.log(email, name, SupplierID)
             connection.end()
             // EmailService.email(email, password)
 
