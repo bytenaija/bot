@@ -57,11 +57,13 @@ module.exports = {
                         conversation.transition()
                         done()
                     }).catch(err =>{
+                        connection.end()
                         console.log(err);
                         conversation.transition('PasswordRecoveryError')
                         done()
                     })
                 }).catch(err =>{
+                    connection.end()
                     console.log(err);
                     conversation.transition('PasswordRecoveryError');
                     done();
@@ -69,12 +71,17 @@ module.exports = {
 
 
             } else {
+                connection.end()
                 conversation.transition('WrongID')
                 done()
             }
 
          
+            connection.end()
+        }).catch(err =>{
+            console.log(err);
 
+            connection.end()
         })
 
 
