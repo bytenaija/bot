@@ -1,7 +1,7 @@
 const EmailService = require('../services/EmailService');
 
 var generator = require('generate-password');
-
+let mysql = require('promise-mysql');
 
 module.exports = {
     metadata: () => ({
@@ -55,7 +55,7 @@ module.exports = {
                     }).catch(err => {
                         connection.end()
                         console.log(err);
-                        conversation.transition('PasswordRecoveryError')
+                        conversation.transition('codeEntryError')
                         done()
                     })
                 })
@@ -65,7 +65,7 @@ module.exports = {
 
             } else {
                 connection.end()
-                conversation.transition('WrongID')
+                conversation.transition('codeEntryError')
                 done()
             }
 
