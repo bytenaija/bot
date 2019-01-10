@@ -50,18 +50,21 @@ module.exports = {
                         max: 999999,
                         integer: true
                     });
-                    connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `code`) VALUES (NULL, '" + email + "', '" + password + "')").then(result => {
-                        connection.end()
-                        EmailService.email(email, password, name, 'CodeGeneration')
-                        conversation.keepTurn(true);
-                        conversation.transition()
-                        done()
-                    }).catch(err =>{
-                        connection.end()
-                        console.log(err);
-                        conversation.transition('PasswordRecoveryError')
-                        done()
+                    connection.query('DELETE FROM `password_recovery` WHERE `email` = "' + email + '"').then(result =>{
+                        connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `code`) VALUES (NULL, '" + email + "', '" + password + "')").then(result => {
+                            connection.end()
+                            EmailService.email(email, password, name, 'CodeGeneration')
+                            conversation.keepTurn(true);
+                            conversation.transition()
+                            done()
+                        }).catch(err =>{
+                            connection.end()
+                            console.log(err);
+                            conversation.transition('PasswordRecoveryError')
+                            done()
+                        })
                     })
+                    
                 }).catch(err =>{
                     connection.end()
                     console.log(err);
