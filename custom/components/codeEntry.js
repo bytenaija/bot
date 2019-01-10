@@ -5,7 +5,7 @@ var generator = require('generate-password');
 
 module.exports = {
     metadata: () => ({
-        name: 'PasswordRecovery',
+        name: 'CodeEntry',
         properties: {
             code: {
                 required: true,
