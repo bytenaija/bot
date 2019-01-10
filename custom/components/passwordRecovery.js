@@ -13,12 +13,12 @@ module.exports = {
                 type: 'string'
             },
         },
-        supportedActions: ['WrongID']
+        supportedActions: ['WrongID', 'PasswordRecoveryError']
     }),
     invoke: (conversation, done) => {
         let tableCreationQuery = 'CREATE TABLE IF NOT EXISTS `bytenaij_nipex`.`password_recovery` ( `transID` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(255) NOT NULL , `code` INT(6) NOT NULL , PRIMARY KEY (`transID`)) ENGINE = MyISAM';
-        let mysqlConnectionString = 'mysql://bytenaij_nipex:nipex1234567890@5.153.10.230:3306/bytenaij_nipex';
-        
+      
+
         let {
             SupplierID
         } = conversation.properties();
@@ -31,42 +31,53 @@ module.exports = {
             user: 'bytenaij_nipex',
             port: 3306,
             database: 'bytenaij_nipex'
-        }).then(conn =>{
+        }).then(conn => {
             connection = conn;
             return connection.query('select * from suppliers where `supplierID`="' + SupplierID + '"')
             conn.end()
-        }).then(row =>{
-            if(row.length != 0){
-                let {email, name, supplierID} = row[0];
+        }).then(row => {
+            if (row.length != 0) {
+                let {
+                    email,
+                    name,
+                    supplierID
+                } = row[0];
 
                 console.log(email, name, supplierID)
-                connection.query(tableCreationQuery).then(result =>{
-                    console.log(result)
+                connection.query(tableCreationQuery).then(result => {
+                    var password = generator({
+                        min: 1000,
+                        max: 999999,
+                        integer: true
+                    });
+                    connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `code`) VALUES (NULL, '" + email + "', '" + password + "')").then(result => {
+                        connection.end()
+                        EmailService.email(email, password)
+                        conversation.keepTurn(true);
+                        conversation.transition()
+                        done()
+                    }).catch(err =>{
+                        console.log(err);
+                        conversation.transition('PasswordRecoveryError')
+                        done()
+                    })
+                }).catch(err =>{
+                    console.log(err);
+                    conversation.transition('PasswordRecoveryError');
+                    done();
                 });
 
-                                     
-            var password = generator({
-                min:  1000,
-                max:  999999,
-                integer: true
-              });
-              
-                connection.end()
-                EmailService.email(email, password)
-    
- 
-              console.log("Pass code", password)
-                conversation.keepTurn(true);
-                conversation.transition()
-            }else{
+
+            } else {
                 conversation.transition('WrongID')
+                done()
             }
 
-            done()
-            
+         
+
         })
 
-   
+
 
     }
 };
