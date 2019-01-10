@@ -40,9 +40,11 @@ module.exports = {
                 let {email, name, supplierID} = row[0];
 
                 console.log(email, name, supplierID)
-                let result =  connection.query(tableCreationQuery);
+                connection.query(tableCreationQuery).then(result =>{
+                    console.log(result)
+                });
 
-                console.log(result)
+                
                 connection.end()
                 EmailService.email(email, password)
     
