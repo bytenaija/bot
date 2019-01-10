@@ -7,7 +7,7 @@ module.exports = {
     metadata: () => ({
         name: 'PasswordRecovery',
         properties: {
-            email: {
+            SupplierID: {
                 required: true,
                 type: 'string'
             },
