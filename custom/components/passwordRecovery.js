@@ -43,7 +43,7 @@ module.exports = {
                     supplierID
                 } = row[0];
 
-                console.log(email, name, supplierID)
+              
                 connection.query(tableCreationQuery).then(result => {
                     var password = generator({
                         min: 1000,
@@ -52,7 +52,7 @@ module.exports = {
                     });
                     connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `code`) VALUES (NULL, '" + email + "', '" + password + "')").then(result => {
                         connection.end()
-                        EmailService.email(email, password)
+                        EmailService.email(email, password, name, 'CodeGeneration')
                         conversation.keepTurn(true);
                         conversation.transition()
                         done()

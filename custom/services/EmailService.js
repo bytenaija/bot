@@ -13,7 +13,7 @@ auth: {
 }
 })
 
-exports.email = (emailAddress, password) =>{
+exports.email = (emailAddress, password, name, template) =>{
 
     console.log(__dirname)
 const templateDir = path.join(__dirname, 'Emails')
@@ -32,12 +32,13 @@ transport: transport,
  
 emailService
   .send({
-    template: 'PasswordRecovery',
+    template: template,
     message: {
       to: emailAddress
     },
     locals: {
-      password
+      password,
+      name
     }
   })
   .then()

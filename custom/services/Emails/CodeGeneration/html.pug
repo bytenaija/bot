@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    block head
+      meta(charset="utf-8")
+      meta(name="viewport", content="width=device-width")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="x-apple-disable-message-reformatting")
+      link(rel="stylesheet", href="./style.css", data-inline)
+  body
+
+    div(style={'line-height': '2em'})  Hello #{name},
+
+    p A password recovery action has been initiated against your account. Please use the code below to complete the password recovery proccess.
+
+    p(style={'font-weight': 'bold'}) The password recovery code is:  
+    |
+    span(style={'font-size': '1rem'}) #{password},
+
+    p In the event that you did not initiate this request, kindly ignore this message.
+
+    p Thank you for being a valued Nipex Customer!
+
+   
+    p(style={ 'font-weight': 'bold','line-height': '2em'}) Nipex
+    |
+    img.image(src='http://njqs.nipex-ng.com/njqs/images/NIPEX.png', style={'width': '100px'})
+
+    p This is an automated email. Please do not reply to this message.
