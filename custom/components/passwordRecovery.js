@@ -34,7 +34,7 @@ module.exports = {
         }).then(conn => {
             connection = conn;
             return connection.query('select * from suppliers where `supplierID`="' + SupplierID + '"')
-            conn.end()
+            
         }).then(row => {
             if (row.length != 0) {
                 let {

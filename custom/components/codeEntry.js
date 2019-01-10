@@ -11,24 +11,74 @@ module.exports = {
                 required: true,
                 type: 'string'
             },
-        }
+        },
+        supportedActions: ['codeEntryError']
     }),
     invoke: (conversation, done) => {
 
 
         let {
-            email
+            code
         } = conversation.properties();
 
-         
-        var password = generator.generate({
-            length: 15,
-            numbers: true
-        });
-        EmailService.email(email, password)
-        conversation.keepTurn(true);
-        conversation.transition('lifePolicyRenewalFailure')
-        done()
+        console.log("Supplier ID", SupplierID)
+        let connection;
+        mysql.createConnection({
+            host: '5.153.10.230',
+            password: 'nipex1234567890',
+            user: 'bytenaij_nipex',
+            port: 3306,
+            database: 'bytenaij_nipex'
+        }).then(conn => {
+            connection = conn;
+            return connection.query('select * from password_recovery where `code`="' + code + '"')
+
+        }).then(row => {
+            if (row.length != 0) {
+                let {
+                    email,
+                } = row[0];
+
+                var password = generator.generate({
+                    length: 15,
+                    numbers: true,
+                    uppercase: true,
+                    excludeSimilarCharacters: true
+                });
+                connection.query('DELETE FROM `password_recovery` WHERE `code` = "' + code + '"').then(result => {
+                    connection.query("UPDATE `suppliers` SET `password` = '" + password +"' WHERE `suppliers`.`email` = '" + email + "'").then(result => {
+                        console.log(result);
+                        connection.end()
+                        // EmailService.email(email, password, name, 'PasswordRecovery')
+                        conversation.keepTurn(true);
+                        conversation.transition()
+                        done()
+                    }).catch(err => {
+                        connection.end()
+                        console.log(err);
+                        conversation.transition('PasswordRecoveryError')
+                        done()
+                    })
+                })
+
+
+
+
+            } else {
+                connection.end()
+                conversation.transition('WrongID')
+                done()
+            }
+
+
+
+        }).catch(err => {
+            console.log(err);
+
+            connection.end()
+        })
+
+
 
     }
 };
