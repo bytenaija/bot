@@ -77,7 +77,7 @@ module.exports = {
             }
 
          
-            connection.end()
+            
         }).catch(err =>{
             console.log(err);
 
