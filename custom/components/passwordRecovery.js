@@ -39,8 +39,7 @@ module.exports = {
             if (row.length != 0) {
                 let {
                     email,
-                    name,
-                    supplierID
+                    name
                 } = row[0];
 
               

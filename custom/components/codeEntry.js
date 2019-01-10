@@ -46,12 +46,24 @@ module.exports = {
                 });
                 connection.query('DELETE FROM `password_recovery` WHERE `code` = "' + code + '"').then(result => {
                     connection.query("UPDATE `suppliers` SET `password` = '" + password +"' WHERE `suppliers`.`email` = '" + email + "'").then(result => {
-                        console.log(result);
+                        return connection.query('select * from suppliers where `email`="' + email + '"')
+                       
+                    }).then(row =>{
+                        if (row.length != 0) {
+                            let {
+                                email,
+                                name
+                            } = row[0]; 
                         connection.end()
-                        // EmailService.email(email, password, name, 'PasswordRecovery')
+                        EmailService.email(email, password, name, 'PasswordRecovery')
                         conversation.keepTurn(true);
                         conversation.transition()
                         done()
+                    }
+                        else{
+                            connection.end()
+                            conversation.transition('codeEntryError')
+                        }
                     }).catch(err => {
                         connection.end()
                         console.log(err);
