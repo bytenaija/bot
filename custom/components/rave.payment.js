@@ -108,7 +108,7 @@ module.exports = {
             var payload2 = {
                           "PBFPubKey": "FLWPUBK-c674c68d40a0cb428926869498f14171-X",
                           "transaction_reference": ref,
-                          "otp": "12345"
+                          "otp": ""
                           }
             rave.Card.validate(payload2).then(resp => {
                 conversation.keepTurn(true)
