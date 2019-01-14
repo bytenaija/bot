@@ -42,7 +42,7 @@ module.exports = {
                     length: 15,
                     numbers: true,
                     uppercase: true,
-                    excludeSimilarCharacters: true
+                    excludeSimilarCharacters: true,
                 });
                 connection.query('DELETE FROM `password_recovery` WHERE `code` = "' + code + '"').then(result => {
                     connection.query("UPDATE `suppliers` SET `password` = '" + password + "' WHERE `suppliers`.`email` = '" + email + "'").then(result => {
