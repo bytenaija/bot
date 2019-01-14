@@ -58,7 +58,7 @@ module.exports = {
         }
 
         const transaction = {
-            email: email,
+            email: 'everistusolumese@gmail.com',
             amount: 30000,
             reference: transactionRef,
             card
@@ -111,7 +111,7 @@ module.exports = {
                           }
             rave.Card.validate(payload2).then(resp => {
                 conversation.keepTurn(true)
-                conversation.variable("paymentRef", chargeResponse.data.data.id)
+                conversation.variable("paymentRef", ref)
                 conversation.transition('paymentSuccess')
                 done()
             })
