@@ -94,7 +94,7 @@ module.exports = {
                 response = resp.body.data.flwRef;
               } else{
                 response = new Error("Couldn't get response, this is being fixed");
-                throw response;
+                throw resp;
               }
               console.log(response)
               return response;
