@@ -119,29 +119,29 @@ module.exports = {
               })
           })
 
-        rave.Card.charge(payload).then(resp => {
-                var payload = {
-                    "PBFPubKey": "FLWPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
-                    "transaction_reference": ref,
-                    "otp": ""
-                }
-                // We create a payload with public key, and transaction ref obtained from charge response.
-                rave.Card.validate(payload).then(resp => {
+        // rave.Card.charge(payload).then(resp => {
+        //         var payload = {
+        //             "PBFPubKey": "FLWPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
+        //             "transaction_reference": ref,
+        //             "otp": ""
+        //         }
+        //         // We create a payload with public key, and transaction ref obtained from charge response.
+        //         rave.Card.validate(payload).then(resp => {
  
-                    })
-                    .catch(err => {
-                        console.log(err)
-                        conversation.keepTurn(true)
-                        conversation.transition('paymentError')
-                        done()
-                    })
-            })
-            .catch(err => {
-                console.log(err)
-                conversation.keepTurn(true)
-                conversation.transition('paymentError')
-                done()
-            })
+        //             })
+        //             .catch(err => {
+        //                 console.log(err)
+        //                 conversation.keepTurn(true)
+        //                 conversation.transition('paymentError')
+        //                 done()
+        //             })
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //         conversation.keepTurn(true)
+        //         conversation.transition('paymentError')
+        //         done()
+        //     })
 
 
         // axios.post(`https://api.paystack.co/charge`,
