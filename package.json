@@ -8,6 +8,7 @@
   "dependencies": {
     "@oracle/bots-node-sdk": "^2.1.0",
     "axios": "^0.18.0",
+    "bluebird": "^3.5.3",
     "email-templates": "^5.0.2",
     "express": "^4.13.4",
     "generate-password": "^1.4.1",

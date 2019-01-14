@@ -1,6 +1,6 @@
 const axios = require('axios');
 const Ravepay = require('ravepay');
-
+const Promise = require("bluebird");
 
 
 module.exports = {
