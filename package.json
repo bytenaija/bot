@@ -12,6 +12,7 @@
     "email-templates": "^5.0.2",
     "express": "^4.13.4",
     "generate-password": "^1.4.1",
+    "ip": "^1.1.5",
     "mysql": "^2.16.0",
     "nodemailer": "^4.7.0",
     "nodemailer-sendgrid": "^1.0.3",

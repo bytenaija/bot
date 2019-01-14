@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Ravepay = require('ravepay');
 const Promise = require("bluebird");
+const ip = require("ip");
 
 
 module.exports = {
@@ -79,7 +80,7 @@ module.exports = {
             "suggested_auth": "PIN",
             "firstname": card.firstname,
             "lastname": card.lastname,
-            // "IP": "355426087298442",
+            "IP": ip.address(),
             "txRef": transaction.reference,
             // "device_fingerprint": "69e6b7f0b72037aa8428b70fbe03986c"
         };
@@ -99,7 +100,7 @@ module.exports = {
               return response;
             })
             .catch(err => {
-              console.log("P: ",err.message);
+              console.log("P: ",err);
             })
           ]).spread(ref => {
             console.log("this is ref: ",ref);
@@ -115,7 +116,7 @@ module.exports = {
                 done()
             })
               .catch(err => {
-                console.log("got this error: ",err.message);
+                console.log("got this error: ",err);
               })
           })
 
