@@ -38,11 +38,11 @@ module.exports = {
             amount,
             transactionRef
         } = conversation.properties();
-        console.log(email)
+        //console.log(email)
 
         axios.defaults.headers.post['Authorization'] = 'Bearer sk_test_f4a095ef53406f3f9488ab67d7f9e67e046ca8dd';
 
-        console.log(cardDetails)
+        //console.log(cardDetails)
         let expiry = cardDetails.expiry.split("/");
 
         const headers = {
@@ -92,18 +92,19 @@ module.exports = {
               var response;
               if(resp.body && resp.body.data && resp.body.data.flwRef){
                 response = resp.body.data.flwRef;
+                console.log(resp.body)
               } else{
                 response = new Error("Couldn't get response, this is being fixed");
                 throw resp;
               }
-              console.log(response)
+            //   console.log(response)
               return response;
             })
             .catch(err => {
-              console.log("P: ",err);
+              //console.log("P: ",err);
             })
           ]).spread(ref => {
-            console.log("this is ref: ",ref);
+            //console.log("this is ref: ",ref);
             var payload2 = {
                           "PBFPubKey": "FLWPUBK-c674c68d40a0cb428926869498f14171-X",
                           "transaction_reference": ref,
@@ -116,7 +117,7 @@ module.exports = {
                 done()
             })
               .catch(err => {
-                console.log("got this error: ",err);
+                //console.log("got this error: ",err);
               })
           })
 
@@ -131,14 +132,14 @@ module.exports = {
  
         //             })
         //             .catch(err => {
-        //                 console.log(err)
+        //                 //console.log(err)
         //                 conversation.keepTurn(true)
         //                 conversation.transition('paymentError')
         //                 done()
         //             })
         //     })
         //     .catch(err => {
-        //         console.log(err)
+        //         //console.log(err)
         //         conversation.keepTurn(true)
         //         conversation.transition('paymentError')
         //         done()
@@ -149,7 +150,7 @@ module.exports = {
         //         transaction
         //     )
         //     .then(chargeResponse => {
-        //         console.log(chargeResponse.data)
+        //         //console.log(chargeResponse.data)
         //         // Handle the charge response
         //         if (chargeResponse.data.status) {
         //             conversation.keepTurn(true)
@@ -162,7 +163,7 @@ module.exports = {
         //             done()
         //         }
         //     }).catch(err => {
-        //         console.log(err)
+        //         //console.log(err)
         //         conversation.keepTurn(true)
         //         conversation.transition('paymentError')
         //         done()
