@@ -62,7 +62,7 @@ module.exports = {
                         integer: true
                     });
                     connection.query('DELETE FROM `password_recovery` WHERE `email` = "' + email + '"').then(result =>{
-                        connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `SystemType`, `code`) VALUES (NULL, '" + email + "', '" + SystemType + "'" + password + "')").then(result => {
+                        connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `SystemType`, `code`) VALUES (NULL, '" + email + "', '" + SystemType + "', '" + password + "')").then(result => {
                             connection.end()
                             EmailService.email(email, password, name, 'CodeGeneration')
                             conversation.keepTurn(true);
