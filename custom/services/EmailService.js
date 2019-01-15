@@ -6,7 +6,7 @@ nodemailer = require('nodemailer');
 let transport = nodemailer.createTransport({
 host: 'smtp.office365.com',
 port: 587,
-secure: true, 
+secure: false, 
 requireTLS: true,
 auth: {
     user: 'noreply.nipex@nipex.com.ng', // generated ethereal user
