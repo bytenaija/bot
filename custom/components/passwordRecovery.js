@@ -42,6 +42,7 @@ module.exports = {
                 return connection.query('select * from sec_supp_users where `login`="' + SupplierID + '"')
             }else{
                 throw ('Only NJQS System is working for now');
+               
             }
             
             
@@ -92,7 +93,8 @@ module.exports = {
             
         }).catch(err =>{
             console.log(err);
-
+            conversation.transition('PasswordRecoveryError');
+            done();
             connection.end()
         })
 
