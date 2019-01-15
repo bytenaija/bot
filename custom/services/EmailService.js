@@ -5,7 +5,7 @@ nodemailer = require('nodemailer');
 
 let transport = nodemailer.createTransport({
 host: 'smtp.office365.com',
-port: 25,
+port: 587,
 secure: true, 
 requireTLS: true,
 auth: {
@@ -22,10 +22,9 @@ const templateDir = path.join(__dirname, 'Emails')
 const emailService = new Email({
 views: { root: templateDir },
   message: {
-    from: 'niftylettuce@gmail.com'
+    from: 'noreply.nipex@nipex.com.ng'
   },
-  // uncomment below to send emails in development/test env:
-  // send: true
+
 send: true,
 transport: transport,
 
