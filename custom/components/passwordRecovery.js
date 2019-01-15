@@ -16,7 +16,7 @@ module.exports = {
         supportedActions: ['WrongID', 'PasswordRecoveryError']
     }),
     invoke: (conversation, done) => {
-        let tableCreationQuery = 'CREATE TABLE IF NOT EXISTS `bytenaij_nipex`.`password_recovery` ( `transID` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(255) NOT NULL , `code` INT(6) NOT NULL , PRIMARY KEY (`transID`)) ENGINE = MyISAM';
+        let tableCreationQuery = 'CREATE TABLE IF NOT EXISTS `softalliance`.`password_recovery` ( `transID` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(255) NOT NULL , `code` INT(6) NOT NULL , PRIMARY KEY (`transID`)) ENGINE = MyISAM';
       
 
         let {
@@ -26,14 +26,14 @@ module.exports = {
         console.log("Supplier ID", SupplierID)
         let connection;
         mysql.createConnection({
-            host: '5.153.10.230',
-            password: 'nipex1234567890',
-            user: 'bytenaij_nipex',
+            host: 'test.nipexjqs.com',
+            password: 'softalliance',
+            user: 'softalliance',
             port: 3306,
-            database: 'bytenaij_nipex'
+            database: 'softalliance'
         }).then(conn => {
             connection = conn;
-            return connection.query('select * from suppliers where `supplierID`="' + SupplierID + '"')
+            return connection.query('select * from sec_supp_users where `login`="' + SupplierID + '"')
             
         }).then(row => {
             if (row.length != 0) {
