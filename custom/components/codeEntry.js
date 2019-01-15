@@ -45,7 +45,7 @@ module.exports = {
                     excludeSimilarCharacters: true,
                 });
                 connection.query('DELETE FROM `password_recovery` WHERE `code` = "' + code + '"').then(result => {
-                    connection.query("UPDATE `sec_supp_users` SET `password` = '" + password + "' WHERE `sec_supp_users`.`email` = '" + email + "'").then(result => {
+                    connection.query("UPDATE `sec_supp_users` SET `pswd` = '" + password + "' WHERE `sec_supp_users`.`email` = '" + email + "'").then(result => {
                         return connection.query('select * from sec_supp_users where `email`="' + email + '"')
 
                     }).then(row => {
