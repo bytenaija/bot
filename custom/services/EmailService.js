@@ -4,12 +4,12 @@ nodemailer = require('nodemailer');
 
 
 let transport = nodemailer.createTransport({
-host: 'smtp.gmail.com',
-port: 465,
+host: 'smtp.office365.com',
+port: 587,
 secure: true, // true for 465, false for other ports
 auth: {
-    user: 'bytenaija@gmail.com', // generated ethereal user
-    pass: 'skywalk09@1984' // generated ethereal password
+    user: 'noreply.nipex@nipex.com.ng', // generated ethereal user
+    pass: 'Kad65759' // generated ethereal password
 }
 })
 

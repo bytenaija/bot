@@ -89,84 +89,29 @@ module.exports = {
 
         Promise.all([
             rave.Card.charge(payload).then(resp => {
-              var response;
-              if(resp.body && resp.body.data && resp.body.data.flwRef){
-                response = resp.body.data.flwRef;
-                console.log(resp.body)
-              } else{
-                response = new Error("Couldn't get response, this is being fixed");
-                throw resp;
-              }
-            //   console.log(response)
-              return response;
+                var response;
+                if (resp.body && resp.body.data && resp.body.data.flwRef) {
+                    response = resp.body.data.flwRef;
+                    console.log(resp.body)
+                } else {
+                    response = new Error("Couldn't get response, this is being fixed");
+                    throw response;
+                }
+                //   console.log(response)
+                return response;
             })
             .catch(err => {
-              //console.log("P: ",err);
-            })
-          ]).spread(ref => {
-            //console.log("this is ref: ",ref);
-            var payload2 = {
-                          "PBFPubKey": "FLWPUBK-c674c68d40a0cb428926869498f14171-X",
-                          "transaction_reference": ref,
-                          "otp": ""
-                          }
-            rave.Card.validate(payload2).then(resp => {
+                console.log("P: ", err);
                 conversation.keepTurn(true)
-                conversation.variable("paymentRef", ref)
-                conversation.transition('paymentSuccess')
+                conversation.transition('paymentError')
                 done()
             })
-              .catch(err => {
-                //console.log("got this error: ",err);
-              })
-          })
-
-        // rave.Card.charge(payload).then(resp => {
-        //         var payload = {
-        //             "PBFPubKey": "FLWPUBK-e634d14d9ded04eaf05d5b63a0a06d2f-X",
-        //             "transaction_reference": ref,
-        //             "otp": ""
-        //         }
-        //         // We create a payload with public key, and transaction ref obtained from charge response.
-        //         rave.Card.validate(payload).then(resp => {
- 
-        //             })
-        //             .catch(err => {
-        //                 //console.log(err)
-        //                 conversation.keepTurn(true)
-        //                 conversation.transition('paymentError')
-        //                 done()
-        //             })
-        //     })
-        //     .catch(err => {
-        //         //console.log(err)
-        //         conversation.keepTurn(true)
-        //         conversation.transition('paymentError')
-        //         done()
-        //     })
+        ]).spread(ref => {
+            conversation.keepTurn(true)
+            conversation.variable("paymentRef", ref)
+            conversation.transition('authenticateWithOTP')
+        })
 
 
-        // axios.post(`https://api.paystack.co/charge`,
-        //         transaction
-        //     )
-        //     .then(chargeResponse => {
-        //         //console.log(chargeResponse.data)
-        //         // Handle the charge response
-        //         if (chargeResponse.data.status) {
-        //             conversation.keepTurn(true)
-        //             conversation.variable("paymentRef", chargeResponse.data.data.id)
-        //             conversation.transition('paymentSuccess')
-        //             done()
-        //         } else {
-        //             conversation.keepTurn(true)
-        //             conversation.transition('paymentFailure')
-        //             done()
-        //         }
-        //     }).catch(err => {
-        //         //console.log(err)
-        //         conversation.keepTurn(true)
-        //         conversation.transition('paymentError')
-        //         done()
-        //     })
     }
 };
