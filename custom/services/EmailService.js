@@ -42,6 +42,6 @@ emailService
     }
   })
   .then()
-  .catch(console.error);
+  .catch(err => console.error("Error", err));
 
 }
