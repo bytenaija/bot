@@ -29,6 +29,7 @@ module.exports = {
         } = conversation.properties();
 
         console.log("Supplier ID", SupplierID)
+        console.log("SystemType", SystemType)
         let connection;
         mysql.createConnection({
             host: 'test.nipexjqs.com',
