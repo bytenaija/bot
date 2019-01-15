@@ -12,15 +12,20 @@ module.exports = {
                 required: true,
                 type: 'string'
             },
+            SystemType: {
+                required: true,
+                type: 'string'
+            }
         },
         supportedActions: ['WrongID', 'PasswordRecoveryError']
     }),
     invoke: (conversation, done) => {
-        let tableCreationQuery = 'CREATE TABLE IF NOT EXISTS `softalliance`.`password_recovery` ( `transID` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(255) NOT NULL , `code` INT(6) NOT NULL , PRIMARY KEY (`transID`)) ENGINE = MyISAM';
+        let tableCreationQuery = 'CREATE TABLE IF NOT EXISTS `softalliance`.`password_recovery` ( `transID` INT NOT NULL AUTO_INCREMENT , `email` VARCHAR(255) NOT NULL , `SystemType` VARCHAR(255) NOT NULL , `code` INT(6) NOT NULL , PRIMARY KEY (`transID`)) ENGINE = MyISAM';
       
 
         let {
-            SupplierID
+            SupplierID,
+            SystemType
         } = conversation.properties();
 
         console.log("Supplier ID", SupplierID)
@@ -33,7 +38,12 @@ module.exports = {
             database: 'softalliance'
         }).then(conn => {
             connection = conn;
-            return connection.query('select * from sec_supp_users where `login`="' + SupplierID + '"')
+            if(SystemType == 'National Joint Qualification System (NJQS) (Qualification system)'){
+                return connection.query('select * from sec_supp_users where `login`="' + SupplierID + '"')
+            }else{
+                throw ('Only NJQS System is working for now');
+            }
+            
             
         }).then(row => {
             if (row.length != 0) {
@@ -50,7 +60,7 @@ module.exports = {
                         integer: true
                     });
                     connection.query('DELETE FROM `password_recovery` WHERE `email` = "' + email + '"').then(result =>{
-                        connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `code`) VALUES (NULL, '" + email + "', '" + password + "')").then(result => {
+                        connection.query("INSERT INTO `password_recovery` (`transID`, `email`, `SystemType`, `code`) VALUES (NULL, '" + email + "', '" + SystemType + "'" + password + "')").then(result => {
                             connection.end()
                             EmailService.email(email, password, name, 'CodeGeneration')
                             conversation.keepTurn(true);
