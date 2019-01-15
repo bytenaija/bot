@@ -58,7 +58,7 @@ module.exports = {
         }
 
         const transaction = {
-            email: 'everistusolumese@gmail.com',
+            email: email,
             amount: 30000,
             reference: transactionRef,
             card
