@@ -65,13 +65,31 @@ module.exports = {
                     done()
                 }
 
+                }),
+
+                axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetManufactureYear`, {
+                    headers: headers,
                 })
+                .then(response => {
+                    console.log("Data", response.data)
+                    let yrManf = []
+                    if (response.data.success) {
+                        let {
+                            result
+                        } = response.data
+    
+                       return yrManf = result;
+                    }
+                })
+    
 
 
 
-    ]).spread((selectedInsurance, colorList) =>{
-        console.log("SelectedInsurance", selectedInsurance);
-        console.log("Colorlist", colorList);
+    ]).spread((selectedInsurance, colorList, yrManf) =>{
+        // console.log("SelectedInsurance", selectedInsurance);
+        // console.log("Colorlist", colorList);
+
+        console.log("Year Man", yrManf);
         conversation.variable("filteredInsurance", selectedInsurance);
           conversation.keepTurn(true)
           conversation.transition()
