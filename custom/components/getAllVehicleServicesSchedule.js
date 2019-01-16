@@ -58,7 +58,12 @@ module.exports = {
                     let {
                         result
                     } = response.data
-                    return colorList = result;
+                    let colorList = {}
+                    for(let idx in result ){
+                        console.log(idx)
+                        colorList.push({"label": result[idx], "value": result[idx]})
+                    }
+                    return colorList;
                 } else {
                     conversation.keepTurn(true);
                     conversation.transition('getColorListFailure')
