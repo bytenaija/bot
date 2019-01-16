@@ -148,7 +148,7 @@ module.exports = {
                     let bodyTypes = []
                     for(let idx in result ){
                     
-                        yrManf.push({"label": result[idx], "value": result[idx]})
+                        bodyTypes.push({"label": result[idx], "value": result[idx]})
                     }
                     return bodyTypes;
                 }
