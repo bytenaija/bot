@@ -33,9 +33,11 @@ module.exports = {
             
    
                 selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' ||  insurance.name == 'Private Motor 3rd Party')
+                travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
           
             console.log(selectedInsurance)
             conversation.variable("filteredInsurance", selectedInsurance);
+            conversation.variable("travelInsurance", travelInsurance[0].id);
           conversation.keepTurn(true)
           conversation.transition()
           done()

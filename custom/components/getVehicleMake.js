@@ -3,8 +3,14 @@ const Promise = require('bluebird');
 
 module.exports = {
     metadata: () => ({
-        name: 'getAllVehicleServicesSchedule',
-        properties: {},
+        name: 'getVehicleMake',
+        properties: {
+           
+            vehicleMake:{
+                type: 'string',
+                required: true
+            },
+        },
         supportedActions: []
     }),
     invoke: (conversation, done) => {
@@ -31,10 +37,10 @@ module.exports = {
 
 
                     selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Private Motor 3rd Party')
-                    travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
 
 
-                    return [selectedInsurance, travelInsurance];
+
+                    return selectedInsurance;
 
                 } else {
                     conversation.keepTurn(true);
@@ -156,9 +162,8 @@ module.exports = {
 
 
             // 
-        ]).spread((selectedInsurance, travelInsurance, colorList, yrManf, genders, titles, bodyTypes) => {
-            console.log(travelInsurance)
-            conversation.variable("travelInsurance", travelInsurance[0].id);
+        ]).spread((selectedInsurance, colorList, yrManf, genders, titles, bodyTypes) => {
+
             conversation.variable("filteredInsurance", selectedInsurance);
             conversation.variable("colorList", colorList);
             conversation.variable("yrManf", yrManf);
