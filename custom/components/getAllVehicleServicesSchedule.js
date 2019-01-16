@@ -60,7 +60,7 @@ module.exports = {
                     } = response.data
                     let colorList = []
                     for(let idx in result ){
-                        console.log(idx)
+                    
                         colorList.push({"label": result[idx], "value": result[idx]})
                     }
                     return colorList;
@@ -82,7 +82,13 @@ module.exports = {
                         result
                     } = response.data
 
-                    return yrManf = result;
+                    let yrManf = []
+                    for(let idx in result ){
+                    
+                        yrManf.push({"label": result[idx], "value": result[idx]})
+                    }
+
+                    return yrManf;
                 }
             }),
 
@@ -97,7 +103,12 @@ module.exports = {
                         result
                     } = response.data
 
-                    return genders = result;
+                    let genders = []
+                    for(let idx in result ){
+                      
+                        genders.push({"label": result[idx].id, "value": result[idx].name})
+                    }
+                    return genders;
                 }
             }),
 
@@ -134,7 +145,12 @@ module.exports = {
                         result
                     } = response.data
 
-                    return bodyTypes = result;
+                    let bodyTypes = []
+                    for(let idx in result ){
+                    
+                        yrManf.push({"label": result[idx], "value": result[idx]})
+                    }
+                    return bodyTypes;
                 }
             }),
 
