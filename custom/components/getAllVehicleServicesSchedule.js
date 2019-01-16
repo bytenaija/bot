@@ -106,7 +106,7 @@ module.exports = {
                     let genders = []
                     for(let idx in result ){
                       
-                        genders.push({"label": result[idx].id, "value": result[idx].name})
+                        genders.push({"label": result[idx].name, "value": result[idx].id})
                     }
                     return genders;
                 }
@@ -127,7 +127,7 @@ module.exports = {
                     let titles = []
                     for(let idx in result ){
                       
-                        titles.push({"label": result[idx].id, "value": result[idx].name})
+                        titles.push({"label": result[idx].name, "value": result[idx].id})
                     }
                     return titles;
                     
