@@ -18,7 +18,7 @@ module.exports = {
     
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
-
+    
     Promise.all([
 
         axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, {
@@ -46,10 +46,32 @@ module.exports = {
           conversation.keepTurn(true);
             conversation.transition()
             done()
-      })
+      }),
 
-    ]).spread(selectedInsurance =>{
+      axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetColorList`, {
+                headers: headers,
+            })
+            .then(response => {
+               
+
+                if (response.data.success) {
+                    let {
+                        result
+                    } = response.data
+                  return colorList = result;
+                } else {
+                    conversation.keepTurn(true);
+                    conversation.transition('getColorListFailure')
+                    done()
+                }
+
+                })
+
+
+
+    ]).spread((selectedInsurance, colorList) =>{
         console.log("SelectedInsurance", selectedInsurance);
+        console.log("Colorlist", colorList);
         conversation.variable("filteredInsurance", selectedInsurance);
           conversation.keepTurn(true)
           conversation.transition()
