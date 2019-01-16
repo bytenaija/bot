@@ -187,8 +187,25 @@ module.exports = {
                     
                 }
             }),
-            // 
-        ]).spread((result, colorList, yrManf, genders, titles, bodyTypes, countries, nonSchengenCountries) => {
+
+            axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetClientCategories`, {
+                headers: headers,
+            })
+            .then(response => {
+              
+            
+                if (response.data.success) {
+                    let {
+                        result
+                    } = response.data
+
+                                     
+                    return travelInsuranceCategory = result;
+                    
+                }
+            }),
+            // https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetClientCategories
+        ]).spread((result, colorList, yrManf, genders, titles, bodyTypes, countries, nonSchengenCountries, travelInsuranceCategory) => {
 
             selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Private Motor 3rd Party')
             travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
@@ -204,6 +221,7 @@ module.exports = {
             conversation.variable("bodyTypes", bodyTypes);
             conversation.variable("schengenCountries", countries);
             conversation.variable("nonSchengenCountries", nonSchengenCountries);
+            conversation.variable("travelInsuranceCategory", travelInsuranceCategory);
             conversation.keepTurn(true)
             conversation.transition()
             done()
