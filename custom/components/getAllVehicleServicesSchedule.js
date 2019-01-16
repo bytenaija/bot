@@ -112,7 +112,13 @@ module.exports = {
                         result
                     } = response.data
 
-                    return titles = result;
+                    let titles = []
+                    for(let element in result ){
+                        console.log(element)
+                        titles.push({"label": element.id, "value": element.name})
+                    }
+                    return titles;
+                    
                 }
             }),
 
