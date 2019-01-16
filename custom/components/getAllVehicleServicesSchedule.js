@@ -30,11 +30,10 @@ module.exports = {
                     } = response.data
 
 
-                    selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Private Motor 3rd Party')
-                    travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
+                   
 
 
-                    return [selectedInsurance, travelInsurance];
+                    return result;
 
                 } else {
                     conversation.keepTurn(true);
@@ -47,6 +46,7 @@ module.exports = {
                 conversation.transition()
                 done()
             }),
+            
 
             axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetColorList`, {
                 headers: headers,
@@ -156,7 +156,10 @@ module.exports = {
 
 
             // 
-        ]).spread((selectedInsurance, travelInsurance, colorList, yrManf, genders, titles, bodyTypes) => {
+        ]).spread((result, travelInsurance, colorList, yrManf, genders, titles, bodyTypes) => {
+
+            selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Private Motor 3rd Party')
+            travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
             console.log(travelInsurance)
             conversation.variable("travelInsurance", travelInsurance[0].id);
             conversation.variable("filteredInsurance", selectedInsurance);
