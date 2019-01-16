@@ -183,12 +183,12 @@ module.exports = {
                     } = response.data
 
                                      
-                    return countries = result;
+                    return nonSchengenCountries = result;
                     
                 }
             }),
             // 
-        ]).spread((result, travelInsurance, colorList, yrManf, genders, titles, bodyTypes, countries, nonSchengenCountries) => {
+        ]).spread((result, colorList, yrManf, genders, titles, bodyTypes, countries, nonSchengenCountries) => {
 
             selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Private Motor 3rd Party')
             travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
