@@ -160,8 +160,10 @@ module.exports = {
 
             selectedInsurance = result.filter(insurance => insurance.name == 'Private Motor Comprehensive' || insurance.name == 'Private Motor 3rd Party')
             travelInsurance = result.filter(insurance => insurance.name == 'Travel Insurance' ||  insurance.name == 'Travel')
+            shopInsurance = result.filter(insurance => insurance.name == 'Shop Insurance' ||  insurance.name == 'Shop')
             console.log(travelInsurance)
             conversation.variable("travelInsurance", travelInsurance[0].id);
+            conversation.variable("shopInsurance", shopInsurance[0].id);
             conversation.variable("filteredInsurance", selectedInsurance);
             conversation.variable("colorList", colorList);
             conversation.variable("yrManf", yrManf);
