@@ -166,7 +166,7 @@ module.exports = {
                     } = response.data
 
                                      
-                    return result;
+                    return countries = result;
                     
                 }
             }),
