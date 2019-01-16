@@ -23,7 +23,6 @@ module.exports = {
 
         axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, headers)
       .then(response => {
-        console.log("Data", response.data)
         let selectedInsurance 
         if (response.data.success) {
             let {result} = response.data
@@ -48,7 +47,7 @@ module.exports = {
       })
 
     ]).spread(selectedInsurance =>{
-        console.log(selectedInsurance);
+        console.log("SelectedInsurance", selectedInsurance);
         conversation.variable("filteredInsurance", selectedInsurance);
           conversation.keepTurn(true)
           conversation.transition()
