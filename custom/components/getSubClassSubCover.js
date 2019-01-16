@@ -2,7 +2,7 @@ const axios = require('axios');
 
 module.exports = {
     metadata: () => ({
-        name: 'getProductSubCover',
+        name: 'getProductSubClassCover',
         properties: {
             productId: {
                 required: false,

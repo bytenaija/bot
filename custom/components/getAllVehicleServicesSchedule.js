@@ -111,18 +111,31 @@ module.exports = {
                 }
             }),
 
-            // 
-        ]).spread((selectedInsurance, colorList, yrManf, genders, titles) => {
-            // console.log("SelectedInsurance", selectedInsurance);
-            // console.log("Colorlist", colorList);
+            axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetBodyTypes`, {
+                headers: headers,
+            })
+            .then(response => {
+              
+            
+                if (response.data.success) {
+                    let {
+                        result
+                    } = response.data
 
-            // console.log("Year Man", yrManf);
-            console.log("titles", titles);
+                    return bodyTypes = result;
+                }
+            }),
+
+
+            // 
+        ]).spread((selectedInsurance, colorList, yrManf, genders, titles, bodyTypes) => {
+
             conversation.variable("filteredInsurance", selectedInsurance);
             conversation.variable("colorList", colorList);
             conversation.variable("yrManf", yrManf);
             conversation.variable("titles", titles);
             conversation.variable("genders", genders);
+            conversation.variable("bodyTypes", bodyTypes);
             conversation.keepTurn(true)
             conversation.transition()
             done()
