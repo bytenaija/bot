@@ -21,7 +21,9 @@ module.exports = {
 
     Promise.all([
 
-        axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, headers)
+        axios.get(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/GetProducts`, {
+            headers
+        })
       .then(response => {
         let selectedInsurance 
         if (response.data.success) {
