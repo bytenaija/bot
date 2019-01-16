@@ -112,10 +112,11 @@ module.exports = {
                         result
                     } = response.data
 
+                    console.log(result)
                     let titles = []
-                    for(let element in result ){
-                        console.log(element)
-                        titles.push({"label": element.id, "value": element.name})
+                    for(let idx in result ){
+                      
+                        titles.push({"label": result[idx].id, "value": result[idx].name})
                     }
                     return titles;
                     
