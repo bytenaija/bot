@@ -58,7 +58,7 @@ module.exports = {
                     let {
                         result
                     } = response.data
-                    let colorList = {}
+                    let colorList = []
                     for(let idx in result ){
                         console.log(idx)
                         colorList.push({"label": result[idx], "value": result[idx]})
