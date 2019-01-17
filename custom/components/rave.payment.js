@@ -107,9 +107,21 @@ module.exports = {
                 done()
             })
         ]).spread(ref => {
+            
+            var payload2 = {
+                "PBFPubKey": "FLWPUBK-c674c68d40a0cb428926869498f14171-X",
+                "transaction_reference": ref,
+                "otp": "12345"
+                }
+        rave.Card.validate(payload2).then(resp => {
+            // return resp.body;
             conversation.keepTurn(true)
             conversation.variable("paymentRef", ref)
-            conversation.transition('authenticateWithOTP')
+            conversation.transition()
+        })
+    .catch(err => {
+      console.log("got this error: ",err.message);
+    })
         })
 
 
