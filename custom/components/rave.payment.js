@@ -118,6 +118,7 @@ module.exports = {
             conversation.keepTurn(true)
             conversation.variable("paymentRef", ref)
             conversation.transition()
+            done()
         })
     .catch(err => {
       console.log("got this error: ",err.message);
