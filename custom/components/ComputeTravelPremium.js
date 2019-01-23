@@ -59,8 +59,8 @@ module.exports = {
                     done()
                 }
             }).catch(err => {
-                console.log("errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", err.response.data);
-                let msg = err.response.error.message
+                console.log("errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", err.response.data.error.message);
+                let msg = err.response.data.error.message
                 conversation.reply(msg)
                     .transition('travelInsuranceNotDefined')
                 conversation.keepTurn(true);
