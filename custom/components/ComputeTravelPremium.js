@@ -59,7 +59,7 @@ module.exports = {
                     done()
                 }
             }).catch(err => {
-                console.log("error", err.response);
+                console.log("errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", err.response);
                 let msg = err.response.error.message
                 conversation.reply(msg)
                     .transition('travelInsuranceNotDefined')
