@@ -18,8 +18,8 @@ module.exports = {
             dateOfBirth,
             startDate,
             endDate} = conversation.properties()
-            console.log("Date of birth");
-            dateOfBirth = moment(dateOfBirth).format('MMMM DD, YYYY');
+            console.log("Date of birth", dateOfBirth);
+            dateOfBirth = moment(new Date(dateOfBirth)).format('MMMM DD, YYYY');
             console.log("Date of birth", dateOfBirth)
        let data = {
             "destinationCountryId": countryId,
