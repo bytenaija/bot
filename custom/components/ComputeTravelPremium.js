@@ -18,8 +18,8 @@ module.exports = {
             dateOfBirth,
             startDate,
             endDate} = conversation.properties()
-
-            dateOfBirth = moment(dateOfBirth).format('MM DD YYYY');
+            console.log("Date of birth");
+            dateOfBirth = moment(dateOfBirth).format('MM DD, YYYY');
             console.log("Date of birth", dateOfBirth)
        let data = {
             "destinationCountryId": countryId,
@@ -38,7 +38,7 @@ module.exports = {
                 headers: headers,
             })
             .then(response => {
-                console.log("Data", response.data)
+                console.log("Dataddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", response.data)
 
                 if (response.data.success) {
                     let {
@@ -52,13 +52,14 @@ module.exports = {
 
 
                 } else {
+                    console.log("Dataddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", response.data)
                     let msg = response.data.error.message
                     conversation.reply(msg)
                         .transition('travelInsuranceNotDefined')
                     done()
                 }
             }).catch(err => {
-                console.log("error", err);
+                console.log("error", err.error);
                 let msg = err.error.message
                 conversation.reply(msg)
                     .transition('travelInsuranceNotDefined')
