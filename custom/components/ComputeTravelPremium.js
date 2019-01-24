@@ -46,7 +46,10 @@ module.exports = {
                         result
                     } = response.data
 
-
+                    conversation.variable('premium', result.premium)
+                    conversation.variable('currency', result.currency)
+                     conversation.variable('sumAssured', result.sumAssured)
+                     conversation.variable('premium', result.premium)
                     conversation.keepTurn(true)
                     conversation.transition()
                     done()
