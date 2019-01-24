@@ -172,9 +172,6 @@ module.exports = {
                     
                 })
 
-
-
-
             } else {
                 connection.end()
                 conversation.transition('codeEntryError')
