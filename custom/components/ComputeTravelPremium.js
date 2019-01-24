@@ -21,11 +21,15 @@ module.exports = {
             console.log("Date of birth", dateOfBirth);
             dateOfBirth = moment(dateOfBirth).format('YYYY/MM/DD');
             console.log("Date of birth", dateOfBirth)
+            endDate = moment(endDate).toISOString();
+            startDate = moment(startDate).toISOString();
+
+            console.log("End - start", endDate, startDate)
        let data = {
         destinationCountryId: countryId,
         dateOfBirth: dateOfBirth,
-        startDate: moment(new Date(startDate)).toISOString(),
-        endDate: moment(new Date(endDate)).toISOString()
+        startDate,
+        endDate 
         }
         const headers = {
             "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
