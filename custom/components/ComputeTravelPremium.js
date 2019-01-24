@@ -18,13 +18,11 @@ module.exports = {
             dateOfBirth,
             startDate,
             endDate} = conversation.properties()
-            console.log("Date of birth", dateOfBirth);
-            dateOfBirth = moment(dateOfBirth).format('YYYY/MM/DD');
-            console.log("Date of birth", dateOfBirth)
+              dateOfBirth = moment(dateOfBirth).format('YYYY/MM/DD');
             endDate = moment(endDate).toISOString();
             startDate = moment(startDate).toISOString();
 
-            console.log("End - start", endDate, startDate)
+            console.log("End - start", endDate, startDate, countryId, dateOfBirth)
        let data = {
         destinationCountryId: countryId,
         dateOfBirth: dateOfBirth,
@@ -33,7 +31,6 @@ module.exports = {
         }
         const headers = {
             "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
-            "Content-Type": "application/json"
         }
 
         axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
