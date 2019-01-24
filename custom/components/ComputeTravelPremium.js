@@ -19,13 +19,13 @@ module.exports = {
             startDate,
             endDate} = conversation.properties()
             console.log("Date of birth", dateOfBirth);
-            dateOfBirth = moment(new Date(dateOfBirth)).format('MMMM DD, YYYY');
+            dateOfBirth = moment().format('YYYY/MM/DD');
             console.log("Date of birth", dateOfBirth)
        let data = {
-            "destinationCountryId": countryId,
-        "dateOfBirth": dateOfBirth,
-        "startDate": moment(startDate).toISOString(),
-        "endDate": moment(endDate).toISOString()
+        destinationCountryId: countryId,
+        dateOfBirth: dateOfBirth,
+        startDate: moment(new Date(startDate)).toISOString(),
+        endDate: moment(new Date(endDate)).toISOString()
         }
         const headers = {
             "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',

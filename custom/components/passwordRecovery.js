@@ -30,6 +30,7 @@ module.exports = {
 
         console.log("Supplier ID", SupplierID)
         console.log("SystemType", SystemType)
+         if(SystemType == 'National Joint Qualification System (NJQS) (Qualification system)'){
         let connection;
         mysql.createConnection({
             host: 'test.nipexjqs.com',
@@ -39,12 +40,9 @@ module.exports = {
             database: 'softalliance'
         }).then(conn => {
             connection = conn;
-            if(SystemType == 'National Joint Qualification System (NJQS) (Qualification system)'){
+           
                 return connection.query('select * from sec_supp_users where `login`="' + SupplierID + '"')
-            }else{
-                throw ('Only NJQS System is working for now');
-               
-            }
+           
             
             
         }).then(row => {
@@ -99,7 +97,10 @@ module.exports = {
             connection.end()
         })
 
-
+     }else{
+                throw ('Only NJQS System is working for now');
+               
+            }
 
     }
 };
