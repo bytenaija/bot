@@ -121,7 +121,6 @@ module.exports = {
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
 let {
-
   name,
   countryId,
   wef,
@@ -149,6 +148,32 @@ let {
   genderId,
 
 } = conversation.properties();
+
+console.log(name,
+  countryId,
+  wef,
+  wet,
+  nokName,
+  nokRelationship,
+  nokaddr,
+  travelParty,
+  groupType,
+  currency,
+  travelPurpose,
+  medical,
+  preMedical,
+  sumAssured,
+  passportNumber,
+  premium,
+  firstName,
+  lastName,
+  dateOfBirth,
+  pryEmail,
+  physicalAddress,
+  smsTel,
+  productId,
+  titleId,
+  genderId)
 
     let data = 
         {

@@ -27,7 +27,10 @@ module.exports = {
                 required: true,
                 type: 'string'
             },
-
+            currency: {
+                required: false,
+                type: 'string'
+            },
             transition: {
                 required: false,
                 type: 'string'
@@ -48,7 +51,8 @@ module.exports = {
             amount,
             transactionRef,
             transition,
-            errorTransition
+            errorTransition,
+            currency
         } = conversation.properties();
         //console.log(email)
 
@@ -83,7 +87,7 @@ module.exports = {
             "cvv": card.cvv,
             "expirymonth": card.expiry_month,
             "expiryyear": card.expiry_year,
-            "currency": "NGN",
+            "currency": currency || "NGN",
             "pin": card.pin,
             "country": "NG",
             "amount": transaction.amount,
