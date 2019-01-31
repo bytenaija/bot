@@ -27,6 +27,16 @@ module.exports = {
                 required: true,
                 type: 'string'
             },
+
+            transition: {
+                required: false,
+                type: 'string'
+            },
+
+            errorTransition: {
+                required: false,
+                type: 'string'
+            },
         },
         supportedActions: ['authenticateWithOTP', 'authenticateWithPIN', 'paymentSuccess', 'paymentFailure', 'paymentError']
     }),
@@ -36,7 +46,9 @@ module.exports = {
             cardDetails,
             email,
             amount,
-            transactionRef
+            transactionRef,
+            transition,
+            errorTransition
         } = conversation.properties();
         //console.log(email)
 
@@ -103,7 +115,12 @@ module.exports = {
             .catch(err => {
                 console.log("P: ", err);
                 conversation.keepTurn(true)
-                conversation.transition('paymentError')
+                if(errorTransition){
+                    conversation.transition(errorTransition)
+                }else{
+                    conversation.transition('paymentError')
+                }
+                
                 done()
             })
         ]).spread(ref => {
@@ -117,7 +134,12 @@ module.exports = {
             // return resp.body;
             conversation.keepTurn(true)
             conversation.variable("paymentRef", ref)
-            conversation.transition()
+            if(transition){
+                conversation.transition(transaction)
+            }else{
+                conversation.transition()
+            }
+          
             done()
         })
     .catch(err => {
