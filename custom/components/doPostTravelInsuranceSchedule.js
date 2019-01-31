@@ -53,7 +53,7 @@ module.exports = {
         required: true,
         type: String
       },
-      preMedical: {
+      medical: {
         required: true,
         type: String
       },
@@ -111,8 +111,7 @@ module.exports = {
     supportedActions: ['travelFailure', 'travelError']
   }),
   invoke: (conversation, done) => {
-    //     // perform conversation tasks.
-    //     const { cardDetails, otp, pin, email, amount } = conversation.properties();
+  
     
     const headers = {
       "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
@@ -134,7 +133,7 @@ let {
   groupType,
   currency,
   travelPurpose,
-  preMedical,
+  medical,
   preMedical,
   sumAssured,
   passportNumber,
@@ -165,7 +164,7 @@ let {
           currency,
           travelPurpose,
           preMedical,
-          preMedical,
+          medical,
           sumAssured,
           passportNumber,
           premium,
