@@ -22,7 +22,7 @@ module.exports = {
             code
         } = conversation.properties();
         
-        let connection, SystemType;
+        let connection, connection2, SystemType;
 
         Promise.all([
 
@@ -33,11 +33,11 @@ module.exports = {
                 port: 3306,
                 database: 'softalliance'
             }).then(conn => {
-               
-                return conn.query('select * from password_recovery where `code`="' + code + '"')
+                connection = conn;
+                return connection.query('select * from password_recovery where `code`="' + code + '"')
     
             }).then(row => {
-                conn.end();
+                connection.end();
                 if (row.length != 0) {
                     
                     return row[0].SystemType
@@ -46,8 +46,8 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",e);
-                conn.end();
+                // console.log("THIS ERRORORORORORORORRO:",e);
+                connection.end();
                 return false;
             }),
 
@@ -59,20 +59,20 @@ module.exports = {
                 port: 3306,
                 database: 'db_nipex_dnb'
             }).then(conn => {
-               
-                return conn.query('select * from password_recovery where `code`="' + code + '"')
+               connection2 = conn
+                return connection2.query('select * from password_recovery where `code`="' + code + '"')
     
             }).then(row => {
-                conn.end();
+                connection2.end();
                 if (row.length != 0) {
                     return row[0].SystemType
                 }else{
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",e);
+                // console.log("THIS ERRORORORORORORORRO:",e);
                 
-                conn.end();
+                connection2.end();
                 return false;
             }),
 
