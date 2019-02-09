@@ -33,11 +33,11 @@ module.exports = {
                 port: 3306,
                 database: 'softalliance'
             }).then(conn => {
-                connection = conn;
-                return connection.query('select * from password_recovery where `code`="' + code + '"')
+               
+                return conn.query('select * from password_recovery where `code`="' + code + '"')
     
             }).then(row => {
-                connection.end();
+                conn.end();
                 if (row.length != 0) {
                     
                     return row[0].SystemType
@@ -46,33 +46,33 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log(e);
-                connection.end();
+                console.log("THIS ERRORORORORORORORRO:",e.substr(0, 200));
+                conn.end();
                 return false;
             }),
 
 
-            mysql.createConnection({
+            mysql.createconn({
                 host: '80.241.219.166',
                 password: 'N1p2e3x4#',
                 user: 'nipex_staging',
                 port: 3306,
                 database: 'db_nipex_dnb'
             }).then(conn => {
-                connection = conn;
-                return connection.query('select * from password_recovery where `code`="' + code + '"')
+               
+                return conn.query('select * from password_recovery where `code`="' + code + '"')
     
             }).then(row => {
-                connection.end();
+                conn.end();
                 if (row.length != 0) {
                     return row[0].SystemType
                 }else{
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",e);
+                console.log("THIS ERRORORORORORORORRO:",e.substr(0, 200));
                 
-                connection.end();
+                conn.end();
                 return false;
             }),
 
