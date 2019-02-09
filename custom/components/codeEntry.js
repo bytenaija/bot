@@ -52,7 +52,7 @@ module.exports = {
             }),
 
 
-            mysql.createconn({
+            mysql.createConnection({
                 host: '80.241.219.166',
                 password: 'N1p2e3x4#',
                 user: 'nipex_staging',
