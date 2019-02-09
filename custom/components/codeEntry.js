@@ -47,7 +47,6 @@ module.exports = {
                 }
             }).catch(e =>{
                 console.log(e);
-                
                 connection.end();
                 return false;
             }),
@@ -71,8 +70,8 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log(e);
-         
+                console.log("THIS ERRORORORORORORORRO:",e);
+                
                 connection.end();
                 return false;
             }),
