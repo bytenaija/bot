@@ -47,7 +47,9 @@ module.exports = {
                 }
             }).catch(e =>{
                 console.log(e);
+                
                 connection.end();
+                return false;
             }),
 
 
@@ -70,11 +72,14 @@ module.exports = {
                 }
             }).catch(e =>{
                 console.log(e);
+         
                 connection.end();
+                return false;
             }),
 
 
         ]).spread((NJQS, VRS) =>{
+            console.log(NJQS, VRS)
             if(NJQS){
                 SystemType = NJQS;
             }else if(VRS){
