@@ -46,7 +46,7 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",e.substr(0, 200));
+                console.log("THIS ERRORORORORORORORRO:",...e);
                 conn.end();
                 return false;
             }),
@@ -70,7 +70,7 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",e.substr(0, 200));
+                console.log("THIS ERRORORORORORORORRO:",...e);
                 
                 conn.end();
                 return false;
@@ -85,7 +85,7 @@ module.exports = {
                 SystemType = NJQS;
             }
 
-            
+            console.log("System Type", SystemType)
         if(SystemType == 'National Joint Qualification System (NJQS) (Qualification system)'){
             mysql.createConnection({
                 host: 'test.nipexjqs.com',
