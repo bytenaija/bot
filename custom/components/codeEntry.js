@@ -46,7 +46,7 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",...e);
+                console.log("THIS ERRORORORORORORORRO:",e);
                 conn.end();
                 return false;
             }),
@@ -70,7 +70,7 @@ module.exports = {
                     return false;
                 }
             }).catch(e =>{
-                console.log("THIS ERRORORORORORORORRO:",...e);
+                console.log("THIS ERRORORORORORORORRO:",e);
                 
                 conn.end();
                 return false;
