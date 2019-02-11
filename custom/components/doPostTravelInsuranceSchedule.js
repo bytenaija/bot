@@ -1,6 +1,7 @@
 
 const axios = require('axios');
-const {inspect} = require('util')
+const { inspect } = require('util');
+const moment = require('moment');
 
 module.exports = {
   metadata: () => ({
@@ -147,12 +148,16 @@ module.exports = {
       genderId,
 
     } = conversation.properties();
+
     premium = parseFloat(premium);
     sumAssured = parseFloat(sumAssured);
     preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
     medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
     travelParty = travelParty == '' ? null : travelParty;
     groupType = groupType == '' ? 'NIL' : groupType;
+    wet = moment(wet).toISOString();
+    wef = moment(wef).toISOString();
+    
     const data = {
       name,
       countryId,
