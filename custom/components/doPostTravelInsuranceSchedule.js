@@ -153,7 +153,7 @@ module.exports = {
     sumAssured = parseFloat(sumAssured);
     preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
     medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
-    travelParty = travelParty == '' ? null : travelParty;
+    travelParty = travelParty == '' ? 'NIL' : travelParty;
     groupType = groupType == '' ? 'NIL' : groupType;
     wet = moment(wet).toISOString();
     wef = moment(wef).toISOString();
