@@ -1,12 +1,12 @@
-'use strict';
- 
+
+
 module.exports = {
   metadata: () => ({
     name: 'hello.world',
     properties: {
       human: { required: true, type: 'string' },
     },
-    supportedActions: ['weekday', 'weekend']
+    supportedActions: ['weekday', 'weekend'],
   }),
   invoke: (conversation, done) => {
     // perform conversation tasks.
@@ -20,7 +20,7 @@ module.exports = {
       .reply(`Greetings ${human}`)
       .reply(`Today is ${now.toLocaleDateString()}, a ${dayOfWeek}`)
       .transition(isWeekend ? 'weekend' : 'weekday');
- 
+
     done();
-  }
+  },
 };

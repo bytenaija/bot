@@ -7,88 +7,89 @@ module.exports = {
     properties: {
       policyNo: {
         required: true,
-        type: 'string'
+        type: 'string',
       },
-     
+
       amount: {
         required: true,
-        type: 'int'
+        type: 'int',
       },
 
       phone: {
         required: true,
-        type: 'string'
+        type: 'string',
       },
 
       transactionDate: {
         required: false,
-        type: 'string'
+        type: 'string',
       },
 
       policyStatus: {
         required: true,
-        type: 'string'
+        type: 'string',
       },
 
       customerName: {
         required: true,
-        type: 'string'
+        type: 'string',
       },
 
       email: {
         required: true,
-        type: 'string'
+        type: 'string',
       },
     },
-    supportedActions: ['lifePolicyRenewalSuccess', 'lifePolicyRenewalFailure', 'lifePolicyRenewalError']
+    supportedActions: ['lifePolicyRenewalSuccess', 'lifePolicyRenewalFailure', 'lifePolicyRenewalError'],
   }),
   invoke: (conversation, done) => {
     //     // perform conversation tasks.
     //     const { cardDetails, otp, pin, email, amount } = conversation.properties();
-    
+
     const headers = {
-      "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
-      "Content-Type": "application/json"
-    }
-    
+      'X-ApiKey': 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
+      'Content-Type': 'application/json',
+    };
+
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
-let {customerName, transactionDate, policyNo, email, phone, amount, policyStatus} = conversation.properties();
+    const {
+      customerName, transactionDate, policyNo, email, phone, amount, policyStatus,
+    } = conversation.properties();
 
-    let data = 
-        {
-            customerName,
-            transactionDate,
-            policyNo,
-            email,
-            phone,
-            amount,
-            policyStatus
-        }
-    
-    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostLifeRenewalSchedule`, data, {
-        headers: headers,
-      })
-      .then(response => {
-        console.log("Data", response.data)
-        
+    const data = {
+      customerName,
+      transactionDate,
+      policyNo,
+      email,
+      phone,
+      amount,
+      policyStatus,
+    };
+
+    axios.post('https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostLifeRenewalSchedule', data, {
+      headers,
+    })
+      .then((response) => {
+        console.log('Data', response.data);
+
         if (response.data.success) {
-            let {result} = response.data;
-            console.log("transaction Ref", result.transactionRef)
-          conversation.keepTurn(true)
-          conversation.variable("transactionRef", result.transactionRef)
-          conversation.transition('lifePolicyRenewalSuccess')
-          done()
-        }else{
-            conversation.keepTurn(true);
-            conversation.transition('lifePolicyRenewalFailure')
-            done()
-        }
-      }).catch(err =>{
-          console.log("error",err);
+          const { result } = response.data;
+          console.log('transaction Ref', result.transactionRef);
           conversation.keepTurn(true);
-            conversation.transition('lifePolicyRenewalError')
-            done()
-      })
-  }
+          conversation.variable('transactionRef', result.transactionRef);
+          conversation.transition('lifePolicyRenewalSuccess');
+          done();
+        } else {
+          conversation.keepTurn(true);
+          conversation.transition('lifePolicyRenewalFailure');
+          done();
+        }
+      }).catch((err) => {
+        console.log('error', err);
+        conversation.keepTurn(true);
+        conversation.transition('lifePolicyRenewalError');
+        done();
+      });
+  },
 };

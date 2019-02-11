@@ -1,9 +1,10 @@
-'use strict';
+
 
 /**
  * Sample express server with custom component services
  */
 const express = require('express');
+
 const logger = console;
 
 const defaultPort = 3000;
@@ -16,6 +17,7 @@ const serviceUrl = '/components';
 
 const app = express();
 const main = require('./service');
+
 main(app, serviceUrl);
 
 const server = app.listen(port, () => {
@@ -23,4 +25,3 @@ const server = app.listen(port, () => {
 });
 
 module.exports = server;
-

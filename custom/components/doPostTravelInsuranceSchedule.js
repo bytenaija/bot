@@ -6,225 +6,222 @@ module.exports = {
     name: 'postTravelInsuranceSchedule',
     properties: {
       name: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       countryId: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       wef: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       wet: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       nokName: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       nokRelationship: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       nokaddr: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       travelParty: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       groupType: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       currency: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       travelPurpose: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       preMedical: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       medical: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       sumAssured: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       passportNumber: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       premium: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       firstName: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       lastName: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       dateOfBirth: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       pryEmail: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       physicalAddress: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       smsTel: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       productId: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       titleId: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
       genderId: {
-        required: true,
-        type: String
+        required: false,
+        type: String,
       },
 
-  
+
     },
-    supportedActions: ['travelFailure', 'travelError']
+    supportedActions: ['travelFailure', 'travelError'],
   }),
   invoke: (conversation, done) => {
-  
-    
     const headers = {
-      "X-ApiKey": 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
-      "Content-Type": "application/json"
-    }
-    
+      'X-ApiKey': 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/',
+      'Content-Type': 'application/json',
+    };
+
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
-let {
-  name,
-  countryId,
-  wef,
-  wet,
-  nokName,
-  nokRelationship,
-  nokaddr,
-  travelParty,
-  groupType,
-  currency,
-  travelPurpose,
-  medical,
-  preMedical,
-  sumAssured,
-  passportNumber,
-  premium,
-  firstName,
-  lastName,
-  dateOfBirth,
-  pryEmail,
-  physicalAddress,
-  smsTel,
-  productId,
-  titleId,
-  genderId,
+    const {
+      name,
+      countryId,
+      wef,
+      wet,
+      nokName,
+      nokRelationship,
+      nokaddr,
+      travelParty,
+      groupType,
+      currency,
+      travelPurpose,
+      medical,
+      preMedical,
+      sumAssured,
+      passportNumber,
+      premium,
+      firstName,
+      lastName,
+      dateOfBirth,
+      pryEmail,
+      physicalAddress,
+      smsTel,
+      productId,
+      titleId,
+      genderId,
 
-} = conversation.properties();
+    } = conversation.properties();
 
-console.log(name,
-  countryId,
-  wef,
-  wet,
-  nokName,
-  nokRelationship,
-  nokaddr,
-  travelParty,
-  groupType,
-  currency,
-  travelPurpose,
-  medical,
-  preMedical,
-  sumAssured,
-  passportNumber,
-  premium,
-  firstName,
-  lastName,
-  dateOfBirth,
-  pryEmail,
-  physicalAddress,
-  smsTel,
-  productId,
-  titleId,
-  genderId)
+    console.log(name,
+      countryId,
+      wef,
+      wet,
+      nokName,
+      nokRelationship,
+      nokaddr,
+      travelParty,
+      groupType,
+      currency,
+      travelPurpose,
+      medical,
+      preMedical,
+      sumAssured,
+      passportNumber,
+      premium,
+      firstName,
+      lastName,
+      dateOfBirth,
+      pryEmail,
+      physicalAddress,
+      smsTel,
+      productId,
+      titleId,
+      genderId);
 
-    let data = 
-        {
-          name,
-          countryId,
-          wef,
-          wet,
-          nokName,
-          nokRelationship,
-          nokaddr,
-          travelParty,
-          groupType,
-          currency,
-          travelPurpose,
-          preMedical,
-          medical,
-          sumAssured,
-          passportNumber,
-          premium,
-          firstName,
-          lastName,
-          dateOfBirth,
-          pryEmail,
-          physicalAddress,
-          smsTel,
-          productId,
-          titleId,
-          genderId,
-        }
-    
-    axios.post(`https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostTravelSchedule`, data, {
-        headers: headers,
-      })
-      .then(response => {
-        console.log("Data", response.data)
-        let {success, transactionRef} = response.data
+    const data = {
+      name,
+      countryId,
+      wef,
+      wet,
+      nokName,
+      nokRelationship,
+      nokaddr,
+      travelParty,
+      groupType,
+      currency,
+      travelPurpose,
+      preMedical,
+      medical,
+      sumAssured,
+      passportNumber,
+      premium,
+      firstName,
+      lastName,
+      dateOfBirth,
+      pryEmail,
+      physicalAddress,
+      smsTel,
+      productId,
+      titleId,
+      genderId,
+    };
+
+    axios.post('https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostTravelSchedule', data, {
+      headers,
+    })
+      .then((response) => {
+        console.log('Data', response.data);
+        const { success, transactionRef } = response.data;
         if (success) {
-          conversation.keepTurn(true)
-          conversation.variable('transactionRef', transactionRef)
-          conversation.transition()
-          done()
-        }else{
-            conversation.keepTurn(true);
-            conversation.transition('travelFailure')
-            done()
-        }
-      }).catch(err =>{
-          console.log("error",err);
           conversation.keepTurn(true);
-            conversation.transition('travelError')
-            done()
-      })
-  }
+          conversation.variable('transactionRef', transactionRef);
+          conversation.transition();
+          done();
+        } else {
+          conversation.keepTurn(true);
+          conversation.transition('travelFailure');
+          done();
+        }
+      }).catch((err) => {
+        console.log('error', err);
+        conversation.keepTurn(true);
+        conversation.transition('travelError');
+        done();
+      });
+  },
 };
