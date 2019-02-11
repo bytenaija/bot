@@ -147,11 +147,11 @@ module.exports = {
       genderId,
 
     } = conversation.properties();
-
+    premium = parseFloat(premium);
     preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
     medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
     travelParty = travelParty == '' ? null : travelParty;
-    groupType = groupType == '' ? null : groupType;
+    groupType = groupType == '' ? 'NIL' : groupType;
     const data = {
       name,
       countryId,
