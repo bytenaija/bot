@@ -218,7 +218,7 @@ module.exports = {
           done();
         }
       }).catch((err) => {
-        console.log('error', err);
+        console.log('error', err.response.data);
         conversation.keepTurn(true);
         conversation.transition('travelError');
         done();
