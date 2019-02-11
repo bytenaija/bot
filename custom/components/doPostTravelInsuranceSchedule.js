@@ -1,5 +1,6 @@
 
 const axios = require('axios');
+const {inspect} = require('util')
 
 module.exports = {
   metadata: () => ({
@@ -147,32 +148,6 @@ module.exports = {
 
     } = conversation.properties();
 
-    console.log(name,
-      countryId,
-      wef,
-      wet,
-      nokName,
-      nokRelationship,
-      nokaddr,
-      travelParty,
-      groupType,
-      currency,
-      travelPurpose,
-      medical,
-      preMedical,
-      sumAssured,
-      passportNumber,
-      premium,
-      firstName,
-      lastName,
-      dateOfBirth,
-      pryEmail,
-      physicalAddress,
-      smsTel,
-      productId,
-      titleId,
-      genderId);
-
     const data = {
       name,
       countryId,
@@ -218,7 +193,7 @@ module.exports = {
           done();
         }
       }).catch((err) => {
-        console.log('error', err.response.data);
+        console.log('error', inspect(err.response.data[, options: {showHidden, depth, colors, showProxy, ...moreOptions}]));
         conversation.keepTurn(true);
         conversation.transition('travelError');
         done();
