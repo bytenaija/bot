@@ -203,12 +203,7 @@ module.exports = {
           done();
         }
       }).catch((err) => {
-        if (err.response.data.error.validationErrors) {
-          console.log('error', inspect(err.response.data.error.validationErrors, { showHidden: true }));
-        } else {
-          console.log('error', inspect(err.response, { showHidden: true }));
-        }
-       
+        console.log('error', err);
         conversation.keepTurn(true);
         conversation.transition('travelError');
         done();
