@@ -147,7 +147,7 @@ module.exports = {
       genderId,
 
     } = conversation.properties();
-    
+
     preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
     medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
 
@@ -201,7 +201,7 @@ module.exports = {
         if (err.response.data.error.validationErrors) {
           console.log('error', inspect(err.response.data.error.validationErrors, { showHidden: true }));
         } else {
-          console.log('error', inspect(err.response.data, { showHidden: true }));
+          console.log('error', inspect(err.response, { showHidden: true }));
         }
 
         conversation.keepTurn(true);
