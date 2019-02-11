@@ -23,6 +23,7 @@
     "ravepay": "^1.2.0",
     "moment": "latest"
   },
+  "engines": {"node": "8.4.0"},
   "scripts": {
     "start": "node index.js",
     "pack:cc": "bots-node-sdk pack ./custom",
