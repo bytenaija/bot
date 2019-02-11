@@ -150,7 +150,8 @@ module.exports = {
 
     preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
     medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
-
+    travelParty = travelParty == '' ? null : travelParty;
+    groupType = groupType == '' ? null : groupType;
     const data = {
       name,
       countryId,
