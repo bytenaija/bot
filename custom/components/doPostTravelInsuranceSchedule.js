@@ -119,7 +119,7 @@ module.exports = {
 
     axios.defaults.headers.post['X-ApiKey'] = 'Pr4d++7WTRIzkzZHunc4+dyh6wWDmUBrj57AIhUXY6dG7TeZPFwwIvBW+ZBo8oK/';
 
-    const {
+    let {
       name,
       countryId,
       wef,
@@ -147,6 +147,9 @@ module.exports = {
       genderId,
 
     } = conversation.properties();
+    
+    preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
+    medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
 
     const data = {
       name,
