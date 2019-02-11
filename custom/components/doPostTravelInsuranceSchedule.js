@@ -148,6 +148,7 @@ module.exports = {
 
     } = conversation.properties();
     premium = parseFloat(premium);
+    sumAssured = parseFloat(sumAssured);
     preMedical = preMedical.toLowerCase() == 'true' || preMedical.toLowerCase() == 'yes' ? true : false
     medical = medical.toLowerCase() == 'true' || medical.toLowerCase() == 'yes' ? true : false
     travelParty = travelParty == '' ? null : travelParty;
