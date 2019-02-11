@@ -176,6 +176,8 @@ module.exports = {
       genderId,
     };
 
+    console.log(data)
+
     axios.post('https://e-business.aiicoplc.com:89/api/services/app/BuyProduct/PostTravelSchedule', data, {
       headers,
     })
@@ -198,7 +200,7 @@ module.exports = {
         } else {
           console.log('error', inspect(err.response.data, { showHidden: true }));
         }
-       
+
         conversation.keepTurn(true);
         conversation.transition('travelError');
         done();
