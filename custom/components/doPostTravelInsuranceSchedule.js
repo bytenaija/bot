@@ -193,7 +193,7 @@ module.exports = {
           done();
         }
       }).catch((err) => {
-        console.log('error', inspect(err.response.data[, options: {showHidden, depth, colors, showProxy, ...moreOptions}]));
+        console.log('error', inspect(err.response.data, { showHidden: true }));
         conversation.keepTurn(true);
         conversation.transition('travelError');
         done();
